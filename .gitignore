@@ -1,2 +1,6 @@
-libs/minilibx-linux
-push
+./libs/minilibx-linux/
+./obj/
+*.o
+**/*.o
+libs/libft/*.o
+so_long
