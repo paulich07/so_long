@@ -16,6 +16,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -I$(HEADERS_DIR) -I$(SRC_DIR) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 
 # Linker/Loader ld
+# Serve anche -Imlx ?
 LDFLAGS = $(LIBFT_FLAGS) $(MINILIBX_FLAGS)
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
 MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
@@ -27,6 +28,9 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# ??? fare un comando che faccia anche:
+# sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
 
 # Commands (da includere minilibx)
 all: $(LIBFT) $(MINILIBX) $(NAME)

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/03/12 16:30:06 by plichota         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:58:07 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,36 @@
 
 int main(void)
 {
-    printf("is alpha: %d", ft_isalpha(97));
+    void    *mlx;
+    void    *win;
 
-    void *mlx;
-    void *win;
+    void    *img;
+    int     *pixels;
+    int     bpp;
+    int     size_line;
+    int     endian;
 
-    // Inizializza la libreria mlx
     mlx = mlx_init();
+    if (!mlx)
+        return (-1);
+
+    win = mlx_new_window(mlx, WIDTH, HEIGHT, "so_long");
+
+    // mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
+
+    img = mlx_new_image(mlx, WIDTH, HEIGHT);
+    pixels = (int *)mlx_get_data_addr(img, &bpp, &size_line, &endian);
     
-    // Crea una finestra con dimensioni 800x600 e un titolo
-    win = mlx_new_window(mlx, 800, 600, "Finestra Minilibx");
+    for (int y = 250; y < 250 + SQUARE_SIZE; y++) {
+        for (int x = 350; x < 350 + SQUARE_SIZE; x++) {
+            // Fill the square with red (in ARGB format)
+            pixels[y * WIDTH + x] = 0x00FF0000; // 0x00FF0000 is red
+        }
+    }
+    
+    mlx_put_image_to_window(mlx, win, img, 0, 0);
 
-    // Colore di sfondo (rosso in RGB)
-    mlx_clear_window(mlx, win);
-    mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
-
-    // Mantieni la finestra aperta fino a che non viene chiusa
+    // mlx_clear_window(mlx, win);
     mlx_loop(mlx);
 
     return (0);
