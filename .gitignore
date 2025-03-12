@@ -1,6 +1,7 @@
 ./libs/minilibx-linux/
 ./obj/
 *.o
+*.a
 **/*.o
 libs/libft/*.o
 so_long

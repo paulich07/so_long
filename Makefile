@@ -9,7 +9,7 @@ OBJ_DIR = obj
 HEADERS_DIR = include
 
 # Links
-# MINILIBX_URL = https://cdn.intra.42.fr/document/document/31497/minilibx-linux.tgz
+MINILIBX_URL = https://cdn.intra.42.fr/document/document/31497/minilibx-linux.tgz
 
 # Compiler
 CC = cc
@@ -41,10 +41,15 @@ $(LIBFT):
 	@echo "---- Compiling libft"
 	$(MAKE) -C $(LIBFT_DIR) --quiet
 
-# to do controllare relinking
-$(MINILIBX):
-	@echo "---- Compiling minilibx"
+$(MINILIBX): | $(MINILIBX_DIR)
+	@echo "---- Compiling minilibx-linux"
 	@$(MAKE) -C $(MINILIBX_DIR) --quiet
+
+$(MINILIBX_DIR):
+	@echo "---- minilibx-linux directory not found, downloading and extracting"
+	@curl -L $(MINILIBX_URL) | tar xz -C $(LIB_DIR)
+	@echo "---- removing minilibx-linux.tgz"
+	@rm -f $(LIB_DIR)/minilibx-linux.tgz
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@echo "---- Compiling $< ----> $@ ----"
@@ -54,6 +59,7 @@ $(OBJ_DIR):
 	@echo "---- Create folder $@"
 	mkdir -p $(OBJ_DIR)
 
+# Remove only temporary files
 clean:
 	@echo "---- Removing $(OBJS)" 
 	rm -rf $(OBJ_DIR) 
@@ -61,7 +67,8 @@ clean:
 	@$(MAKE) clean -C $(LIBFT_DIR)
 	@echo "---- cleaning minilibx"
 	@$(MAKE) clean -C $(MINILIBX_DIR)
- 
+
+# Remove temporary files and executables
 fclean: clean 
 	@echo "---- Removing executable $(NAME)" 
 	rm -f $(NAME)
