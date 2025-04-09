@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:03:51 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:39:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct	s_data {
 	void	*img_player;
 	void	*img_collect;
 	void	*img_exit;
+	int		pos_x;
+	int		pos_y;
 } t_window;
 
 // Hooks
