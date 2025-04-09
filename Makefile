@@ -22,7 +22,8 @@ LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
 MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 
 # Sources
-SRCS = $(SRC_DIR)/main.c
+SRCS =	$(SRC_DIR)/main.c \
+		$(SRC_DIR)/hooks.c \
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
@@ -33,17 +34,16 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 # sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
 
 # Commands (da includere minilibx)
-all: $(LIBFT) $(MINILIBX) $(NAME)
+all: $(NAME)
 	@echo "---- Building executable $(NAME)"
 
 # to do includere minilibx
-$(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
+$(NAME):  $(MINILIBX) $(OBJS) $(LIBFT)
 	@echo "---- Linking target $@ ---- using $^ ----"
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 $(LIBFT):
 	@echo "---- Compiling libft"
-	$(MAKE) -C $(LIBFT_DIR) --quiet
 
 $(MINILIBX): | $(MINILIBX_DIR)
 	@echo "---- Compiling minilibx-linux"
@@ -66,21 +66,17 @@ $(OBJ_DIR):
 # Remove only temporary files
 clean:
 	@echo "---- Removing $(OBJS)" 
-	rm -rf $(OBJ_DIR) 
-	@echo "---- cleaning libft"
-	@$(MAKE) clean -C $(LIBFT_DIR)
+	@rm -rf $(OBJ_DIR) 
 	@echo "---- cleaning minilibx"
 	@$(MAKE) clean -C $(MINILIBX_DIR)
 
 # Remove temporary files and executables
 fclean: clean 
 	@echo "---- Removing executable $(NAME)" 
-	rm -f $(NAME)
-	@echo "---- fcleaning libft"
-	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@rm -f $(NAME)
 	@echo "---- cleaning minilibx"
 	@$(MAKE) clean -C $(MINILIBX_DIR) 
- 
+
 re: fclean all 
  
 .PHONY: all clean fclean re

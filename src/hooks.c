@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 16:23:01 by plichota          #+#    #+#             */
-/*   Updated: 2025/03/01 15:43:28 by plichota         ###   ########.fr       */
+/*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
+/*   Updated: 2025/04/09 21:01:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(int))
+int key_press(int keycode, t_window *vars)
 {
-	while (lst)
+	(void)vars;
+	if (keycode == KEY_ESC)
 	{
-		f(lst->content);
-		lst = lst->next;
+		write(1, "Programma terminato dall'utente.\n", 34);
+		exit(0);
 	}
+    return (1);
 }

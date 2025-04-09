@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/03/12 18:58:40 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/09 21:05:40 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,27 @@
 # include "libft.h"
 # include "mlx.h"
 
+#	include <X11/keysym.h>
+#	include <X11/X.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 
+# define KEY_ESC 53
+
 typedef struct	s_data {
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+} t_img, t_window;
+
+// Hooks
+int     key_press(int keycode, t_window *vars);
+
 
 
 #endif
