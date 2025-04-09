@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 21:24:33 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:28:21 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,21 @@
 int main(void)
 {
     t_window    win;
-    // t_img       img;
+    t_img       img;
+    int img_width;
+    int img_height;
+    void *img_floor;
+    void *img_wall;
+    void *img_player;
+    void *img_collect;
+    
+    char *map[] = {
+        "11111",
+        "1P0C1",
+        "1E001",
+        "11111",
+        NULL
+    };
 
     // Inizializza libreria
     win.mlx = mlx_init();
@@ -32,9 +46,22 @@ int main(void)
     mlx_string_put(win.mlx, win.win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
 
     // IMAGE
-    // img.img = mlx_new_image(win.mlx, WIDTH, HEIGHT);
-    // if (!img.img)
-    //     return (1);
+    img_width = TILE;
+    img_height = TILE;
+
+    win.img_floor = mlx_xpm_file_to_image(win.mlx, "floor.xpm", &img_width, &img_height);
+    win.img_wall = mlx_xpm_file_to_image(win.mlx, "wall.xpm", &img_width, &img_height);
+    win.img_player = mlx_xpm_file_to_image(win.mlx, "player.xpm", &img_width, &img_height);
+    win.img_collect = mlx_xpm_file_to_image(win.mlx, "collect.xpm", &img_width, &img_height);
+    win.img_exit = mlx_xpm_file_to_image(win.mlx, "exit.xpm", &img_width, &img_height);
+
+    if (!win.img_floor || !win.img_wall || !win.img_player || !win.img_collect || !win.img_exit)
+    {
+        write(2, "Errore nel caricamento delle immagini\n", 39);
+        exit(1);
+    }
+
+    render_map(&win);
 
     // pixels = (int *)mlx_get_data_addr(img, &bpp, &size_line, &endian);
 

@@ -23,7 +23,8 @@ MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 
 # Sources
 SRCS =	$(SRC_DIR)/main.c \
-		$(SRC_DIR)/hooks.c \
+				$(SRC_DIR)/hooks.c \
+				$(SRC_DIR)/utils.c
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a

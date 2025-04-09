@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 21:25:18 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:09:06 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief 
 /// @param keycode 
 /// @param vars 
-/// @return 
+/// @return 1
 int key_press(int keycode, t_window *vars)
 {
 	(void)vars;
