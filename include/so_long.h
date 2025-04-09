@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 23:53:52 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:02:36 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int     key_press(int keycode, t_window *vars);
 
 // Utils
 void	render_map(t_window *game);
+int	close_window(t_window *win);
 
 #endif

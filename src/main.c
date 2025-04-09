@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 23:56:36 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:01:14 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(void)
 		return (1);
 
 	// STRING
-	mlx_string_put(win.mlx, win.win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
+	// mlx_string_put(win.mlx, win.win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
 
 	// IMAGE
 	img_width = TILE;
@@ -77,8 +77,13 @@ int main(void)
 
 	// mlx_put_image_to_window(mlx, win, img, 0, 0);
 
-	// HOOK
+	// Hook keys
 	mlx_key_hook(win.win, key_press, NULL);
+
+	// Hook cursor
+	// 17 = evento DestroyNotify (quando clicchi la X)
+	// 0 = mask
+	mlx_hook(win.win, 17, 0, close_window, &win);
 
 	// mlx_clear_window(mlx, win);
 	mlx_loop(win.mlx);
