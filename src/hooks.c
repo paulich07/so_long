@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:57:19 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:02:10 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,18 @@ int key_press(int keycode, t_window *win)
 	}
 	if (keycode == XK_Left)
 	{
-		// printf("walkable: %d\n", is_walkable(win, win->pos_x - 1, win->pos_y));
+		printf("pos_x: %d\n", win->pos_x - 1);
+		printf("walkable: %d\n", is_walkable(win, win->pos_x - 1, win->pos_y));
 		printf("Freccia sinistra!\n");
-		// win->pos_x--;
+		win->pos_x--;
 	}
 	if (keycode == XK_Right)
 	{
-		// printf("walkable: %d\n", is_walkable(win, win->pos_x + 1, win->pos_y));
+		printf("pos_x: %d\n", win->pos_x + 1);
+		printf("pos_x: %d\n", (win->pos_x / TILE) + 1);
+		printf("walkable: %d\n", is_walkable(win, win->pos_x + 1, win->pos_y));
 		printf("Freccia destra!\n");
+		win->pos_x++;
 	}
 	if (keycode == XK_Up)
 		printf("Freccia su!\n");

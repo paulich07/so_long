@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:58:13 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:50:55 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ typedef struct	s_data {
 int     key_press(int keycode, t_window *vars);
 
 // Utils
-void	render_map(t_window *game);
-int	close_window(t_window *win);
+void		render_map(t_window *game);
+int			close_window(t_window *win);
+int			is_walkable(t_window *win, int x, int y);
+void		initialize_player_position(t_window *win);
 
 #endif

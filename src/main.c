@@ -6,12 +6,11 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:56:51 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:55:45 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int main(void)
 {
@@ -28,6 +27,7 @@ int main(void)
 	};
 	win.map = map;
 
+	// To do checker posizione P
 	// Inizializza libreria
 	win.mlx = mlx_init();
 	if (!win.mlx)
@@ -37,6 +37,10 @@ int main(void)
 	win.map_height = 0;
 	while (map[win.map_height])
 		win.map_height++;
+
+	initialize_player_position(&win);
+	printf("pos y %d\n", win.pos_y);
+	printf("pos x %d\n", win.pos_x);
 
 	// Creo finestra
 	win.win = mlx_new_window(win.mlx, win.map_width * TILE, win.map_height * TILE, "so_long");

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:58:02 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 01:55:00 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,31 @@ int	is_walkable(t_window *win, int x, int y)
 		return (1);
 
 	return (0);
+}
+
+// alloco prima y altezza (numero di righe)
+// poi x (lunghezza)
+void	initialize_player_position(t_window *win)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < win->map_height)
+	{
+			x = 0;
+			while (x < win->map_width)
+			{
+					if (win->map[y][x] == 'P')
+					{
+							win->pos_x = x;
+							win->pos_y = y;
+							return ;
+					}
+					x++;
+			}
+			y++;
+    }
+		printf("pos y %d\n", win->pos_y);
+		printf("pos x %d\n", win->pos_x);
 }
