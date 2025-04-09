@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:26:00 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:56:51 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 int main(void)
 {
 	t_window    win;
-	int map_width;
-	int map_height;
 	int img_width;
 	int img_height;
 	
@@ -35,13 +33,13 @@ int main(void)
 	if (!win.mlx)
 		return (1);
 	
-	map_width = ft_strlen(map[0]);
-	map_height = 0;
-	while (map[map_height])
-		map_height++;
+	win.map_width = ft_strlen(map[0]);
+	win.map_height = 0;
+	while (map[win.map_height])
+		win.map_height++;
 
 	// Creo finestra
-	win.win = mlx_new_window(win.mlx, map_width * TILE, map_height * TILE, "so_long");
+	win.win = mlx_new_window(win.mlx, win.map_width * TILE, win.map_height * TILE, "so_long");
 	if (!win.win)
 		return (1);
 
@@ -78,7 +76,7 @@ int main(void)
 	// mlx_put_image_to_window(mlx, win, img, 0, 0);
 
 	// Hook keys
-	mlx_key_hook(win.win, key_press, NULL);
+	mlx_key_hook(win.win, key_press, &win);
 
 	// Hook cursor
 	// 17 = evento DestroyNotify (quando clicchi la X)

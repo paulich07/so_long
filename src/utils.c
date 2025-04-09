@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:16:24 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:58:02 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,15 @@ int  close_window(t_window *win)
 	write(1, "Exit\n", 5);
 	exit(0);
   return (0);
+}
+
+int	is_walkable(t_window *win, int x, int y)
+{
+	if (y < 0 || x < 0 || y >= win->map_height || x >= win->map_width)
+		return (0);
+
+	if (win->map[y][x] != '1')
+		return (1);
+
+	return (0);
 }

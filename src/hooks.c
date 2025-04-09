@@ -6,22 +6,11 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:47:40 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:57:19 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	is_walkable(t_window *win, int x, int y)
-{
-	if (y < 0 || x < 0 || !win->map[y] || x >= (int)ft_strlen(win->map[y]))
-		return (0);
-
-	if (win->map[y][x] != '1')
-		return (1);
-
-	return (0);
-}
 
 /// @brief 
 /// @param keycode 
