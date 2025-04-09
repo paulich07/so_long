@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 22:28:21 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/09 23:48:02 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,8 @@
 int main(void)
 {
     t_window    win;
-    t_img       img;
     int img_width;
     int img_height;
-    void *img_floor;
-    void *img_wall;
-    void *img_player;
-    void *img_collect;
     
     char *map[] = {
         "11111",
@@ -31,6 +26,7 @@ int main(void)
         "11111",
         NULL
     };
+    win.map = map;
 
     // Inizializza libreria
     win.mlx = mlx_init();
@@ -49,11 +45,11 @@ int main(void)
     img_width = TILE;
     img_height = TILE;
 
-    win.img_floor = mlx_xpm_file_to_image(win.mlx, "floor.xpm", &img_width, &img_height);
-    win.img_wall = mlx_xpm_file_to_image(win.mlx, "wall.xpm", &img_width, &img_height);
-    win.img_player = mlx_xpm_file_to_image(win.mlx, "player.xpm", &img_width, &img_height);
-    win.img_collect = mlx_xpm_file_to_image(win.mlx, "collect.xpm", &img_width, &img_height);
-    win.img_exit = mlx_xpm_file_to_image(win.mlx, "exit.xpm", &img_width, &img_height);
+    win.img_floor = mlx_xpm_file_to_image(win.mlx, "textures/floor.xpm", &img_width, &img_height);
+    win.img_wall = mlx_xpm_file_to_image(win.mlx, "textures/wall.xpm", &img_width, &img_height);
+    win.img_player = mlx_xpm_file_to_image(win.mlx, "textures/player.xpm", &img_width, &img_height);
+    win.img_collect = mlx_xpm_file_to_image(win.mlx, "textures/collect.xpm", &img_width, &img_height);
+    win.img_exit = mlx_xpm_file_to_image(win.mlx, "textures/exit.xpm", &img_width, &img_height);
 
     if (!win.img_floor || !win.img_wall || !win.img_player || !win.img_collect || !win.img_exit)
     {
