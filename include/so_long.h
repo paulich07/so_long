@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 00:02:36 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:03:51 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ typedef struct	s_data {
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
-	int		endian;
-	// Texture per ogni elemento
 	void	*img_floor;
 	void	*img_wall;
 	void	*img_player;
