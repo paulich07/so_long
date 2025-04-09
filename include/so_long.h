@@ -6,24 +6,12 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 23:45:14 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/09 23:53:52 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-# ifndef WIDTH
-#  define WIDTH 800
-# endif
-
-# ifndef HEIGHT
-#  define HEIGHT 600
-# endif
-
-# ifndef SQUARE_SIZE
-#  define SQUARE_SIZE 10
-# endif
 
 # ifndef TILE
 #  define TILE 64

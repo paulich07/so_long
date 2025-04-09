@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 22:09:06 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/09 23:51:00 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int key_press(int keycode, t_window *vars)
 	(void)vars;
 	if (keycode == XK_Escape)
 	{
-		write(1, "Programma terminato dall'utente.\n", 34);
+		write(1, "Exit\n", 5);
 		exit(0);
 	}
 	if (keycode == XK_Left)
