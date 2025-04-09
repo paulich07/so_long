@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/09 21:16:22 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/09 21:24:24 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,5 @@ typedef struct	s_data {
 
 // Hooks
 int     key_press(int keycode, t_window *vars);
-
-
 
 #endif
