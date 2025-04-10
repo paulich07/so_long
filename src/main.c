@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 17:05:40 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:19:50 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int main(void)
 
 	map = allocate_map(filename, &win);
 	if (!map)
-		return (ft_printf("Map not allocated properly\n"), 0);
+	{
+		ft_printf("Map not allocated properly\n");
+		exit_program(&win);
+	}
 	win.map = map;
 
 	// To do checker posizione P

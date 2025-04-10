@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 03:18:53 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:17:58 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ void	render_map(t_window *win)
 
 int  close_window(t_window *win)
 {
-  (void) win;
-	write(1, "Exit\n", 5);
-	exit(0);
-  return (0);
+	exit_program(win);
+	return (0);
 }
 
 int	is_walkable(t_window *win, int x, int y)
