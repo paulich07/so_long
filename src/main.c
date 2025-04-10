@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 03:55:53 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 04:15:25 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int main(void)
 
 	// mlx_clear_window(mlx, win);
 	mlx_loop(win.mlx);
+	deallocate_map(win.map, win.map_height);
 	return (0);
 }
