@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 01:55:45 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:35:52 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(void)
 		"11111",
 		NULL
 	};
+
 	win.map = map;
 
 	// To do checker posizione P
