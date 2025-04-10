@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 02:03:14 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:28:33 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	render_map(t_window *win)
 {
 	int x;
   int y;
+
 
 	y = 0;
 	while (win->map[y])
@@ -85,4 +86,19 @@ void	initialize_player_position(t_window *win)
     }
 		printf("pos y %d\n", win->pos_y);
 		printf("pos x %d\n", win->pos_x);
+}
+
+void	move_player(t_window *win, int move_x, int move_y)
+{
+    if (is_walkable(win, win->pos_x + move_x, win->pos_y + move_y))
+    {
+				printf("is walkable\n");
+        win->map[win->pos_y][win->pos_x] = '0';
+				win->pos_x += move_x;
+				win->pos_y += move_y;
+        win->map[win->pos_y][win->pos_x] = 'P';
+        render_map(win);
+    }
+		else
+			printf("not walkable\n");
 }
