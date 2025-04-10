@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 03:44:08 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 03:49:14 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
 
 	filename = "maps/map.ber";
 
-	map = allocate_map(&win, filename);
+	map = allocate_map(filename);
 	if (!map)
 		return (ft_printf("Map not allocated properly\n"), 0);
 	win.map = map;
