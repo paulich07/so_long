@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 02:20:02 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:56:41 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@
 
 # include "libft.h"
 # include "mlx.h"
-// keysymdef in caso non prenda
 #	include <X11/keysym.h>
 #	include <X11/X.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
+# include <fcntl.h>
 
 typedef struct	s_data {
 	void	*mlx;
@@ -45,13 +42,17 @@ typedef struct	s_data {
 } t_window;
 
 // Hooks
-int     key_press(int keycode, t_window *vars);
+int		key_press(int keycode, t_window *vars);
+
+// Parsing
+int		count_lines(char *filename);
+int		is_valid_filename(char *filename);
 
 // Utils
-void		render_map(t_window *win);
-int			close_window(t_window *win);
-int			is_walkable(t_window *win, int x, int y);
-void		initialize_player_position(t_window *win);
-void		move_player(t_window *win, int move_x, int move_y);
+void	render_map(t_window *win);
+int		close_window(t_window *win);
+int		is_walkable(t_window *win, int x, int y);
+void	initialize_player_position(t_window *win);
+void	move_player(t_window *win, int move_x, int move_y);
 
 #endif
