@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 03:49:14 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 03:55:53 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(void)
 		return (1);
 	
 	win.map_width = ft_strlen(map[0]);
+	win.map_width--;
 	win.map_height = 0;
 	while (map[win.map_height])
 		win.map_height++;
