@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 01:02:10 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:05:25 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,32 @@ int key_press(int keycode, t_window *win)
 		printf("pos_x: %d\n", win->pos_x - 1);
 		printf("walkable: %d\n", is_walkable(win, win->pos_x - 1, win->pos_y));
 		printf("Freccia sinistra!\n");
-		win->pos_x--;
+		if (is_walkable(win, win->pos_x - 1, win->pos_y))
+			win->pos_x--;
 	}
 	if (keycode == XK_Right)
 	{
 		printf("pos_x: %d\n", win->pos_x + 1);
-		printf("pos_x: %d\n", (win->pos_x / TILE) + 1);
 		printf("walkable: %d\n", is_walkable(win, win->pos_x + 1, win->pos_y));
 		printf("Freccia destra!\n");
-		win->pos_x++;
+		if (is_walkable(win, win->pos_x + 1, win->pos_y))
+			win->pos_x++;
 	}
 	if (keycode == XK_Up)
+	{
+		printf("pos_y: %d\n", win->pos_y - 1);
+		printf("walkable: %d\n", is_walkable(win, win->pos_x, win->pos_y - 1));
 		printf("Freccia su!\n");
+		if (is_walkable(win, win->pos_x, win->pos_y - 1))
+			win->pos_y--;
+	}
 	if (keycode == XK_Down)
+	{
+		printf("pos_y: %d\n", win->pos_y + 1);
+		printf("walkable: %d\n", is_walkable(win, win->pos_x, win->pos_y + 1));
 		printf("Freccia giù!\n");
+		if (is_walkable(win, win->pos_x, win->pos_y + 1))
+			win->pos_y++;
+	}
 	return (1);
 }
