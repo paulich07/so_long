@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:38:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 03:09:48 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 03:33:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ int count_lines(char *filename)
   while(line)
   {
     count++;
+    free(line);
     // printf("%s\n", line);
     line = get_next_line(fd);
   }
+  free(line);
   close(fd);
   return (count);
 }

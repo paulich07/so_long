@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 03:17:14 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 03:44:08 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,61 +19,12 @@ int main(void)
 	char	*filename;
 	int img_width;
 	int img_height;
-	int	n_lines;
-	
-	// char *map[] = {
-	// 	"11111",
-	// 	"1P0C1",
-	// 	"1E001",
-	// 	"11111",
-	// 	NULL
-	// };
 
 	filename = "maps/map.ber";
-	n_lines = count_lines(filename);
-	// ft_printf("n lines: %d\n", n_lines);
 
-	// alloco colonne
-	map = ft_calloc(n_lines, sizeof(int));
+	map = allocate_map(&win, filename);
 	if (!map)
 		return (ft_printf("Map not allocated properly\n"), 0);
-
-	// ALLOCAZIONE RIGHE!!!-----------------------------------
-	int fd;
-	char  *line;
-	int	l;
-	int	i;
-	int j;
-
-	i = 0;
-	if (!filename)
-		return (ft_printf("File not provided\n"), 0);
-	if (!is_valid_filename(filename))
-		return (ft_printf("File is not valid\n"), 0);
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (ft_printf("Error in file opening\n"), 0);
-	line = get_next_line(fd);
-	while(line && i < n_lines)
-	{
-		j = 0;
-		printf("%s\n", line);
-		l = ft_strlen(line);
-		map[i] = ft_calloc(l, sizeof(int));
-		// allocare ogni line dentro map[i][j]
-		while (j < l || line[j])
-		{
-			map[i][j] = line[j];
-			j++;
-		}
-		map[i][j] = '\0';
-
-		line = get_next_line(fd);
-		i++;
-	}
-	close(fd);
-	// FINE ALLOCAZIONE RIGHE ---------------------------------
-
 	win.map = map;
 
 	// To do checker posizione P
@@ -138,6 +89,5 @@ int main(void)
 
 	// mlx_clear_window(mlx, win);
 	mlx_loop(win.mlx);
-
 	return (0);
 }

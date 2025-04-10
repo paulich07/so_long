@@ -25,6 +25,7 @@ MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 SRCS =	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/hooks.c \
 				$(SRC_DIR)/utils.c \
+				$(SRC_DIR)/map_utils.c \
 				$(SRC_DIR)/parsing.c
 
 LIBFT = $(LIBFT_DIR)/libft.a

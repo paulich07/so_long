@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 02:56:41 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 03:44:05 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ int		close_window(t_window *win);
 int		is_walkable(t_window *win, int x, int y);
 void	initialize_player_position(t_window *win);
 void	move_player(t_window *win, int move_x, int move_y);
+
+// Map utils
+void	deallocate_map(char **map, int i);
+char **allocate_map(t_window *win, char *filename);
 
 #endif
