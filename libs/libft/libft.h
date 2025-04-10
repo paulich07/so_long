@@ -6,20 +6,28 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:02:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/03/01 15:47:25 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:59:37 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <limits.h>
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 256
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stddef.h>
+# include <limits.h>
+# include <stdarg.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
-	// void			*content;
-	int				content;
+	void			*content;
 	struct s_list	*next;
 }	t_list;
 
@@ -53,17 +61,32 @@ char			**ft_split(const char *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char *s, int fd);
+// void			ft_putchar_fd(char c, int fd);
+// void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
-// Liste
-t_list			*ft_lstnew(int content);
+// void			ft_putnbr_fd(int n, int fd);
+// Bonus
+t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstadd_back(t_list **lst, t_list *new);
-void			ft_lstdelone(t_list *lst);
-void			ft_lstclear(t_list **lst);
-void			ft_lstiter(t_list *lst, void (*f)(int));
-t_list			*ft_lstmap(t_list *lst, int (*f)(int));
+void			ft_lstdelone(t_list *lst, void (*del)(void *));
+void			ft_lstclear(t_list **lst, void (*del)(void *));
+void			*del(void *p);
+void			ft_lstiter(t_list *lst, void (*f)(void *));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+					void (*del)(void *));
+// Printf
+int				ft_printf(const char *s, ...);
+int				ft_putchar_fd(char c, int fd);
+int				ft_putstr_fd(char *s, int fd);
+int				ft_putptr_fd(void *p, int fd);
+int				ft_putnbr_fd(int n, int fd);
+int				ft_putunbr_fd(unsigned int n, int fd);
+int				ft_puthex_fd(uintptr_t n, int caps, int fd);
+
+// Get Next Line
+char			*get_next_line(int fd);
+
+#endif
