@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 15:42:39 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:00:17 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
 
 	filename = "maps/map.ber";
 
-	map = allocate_map(filename);
+	map = allocate_map(filename, &win);
 	if (!map)
 		return (ft_printf("Map not allocated properly\n"), 0);
 	win.map = map;
@@ -48,7 +48,7 @@ int main(void)
 	if (!win.win)
 	{
 		write(2, "Errore nel caricamento delle immagini\n", 39);
-		return(exit_program(&win), 1);
+		exit_program(&win);
 	}
 
 	// STRING
@@ -93,6 +93,5 @@ int main(void)
 
 	// mlx_clear_window(mlx, win);
 	mlx_loop(win.mlx);
-	deallocate_map(win.map);
 	return (0);
 }

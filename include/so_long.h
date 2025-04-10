@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 15:42:35 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:58:43 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	move_player(t_window *win, int move_x, int move_y);
 void	exit_program(t_window *win);
 
 // Map utils
+char **allocate_map(char *filename, t_window *win);
 void	deallocate_map(char **map);
-char **allocate_map(char *filename);
 
 #endif
