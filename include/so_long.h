@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 16:58:43 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:05:39 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int		is_walkable(t_window *win, int x, int y);
 void	initialize_player_position(t_window *win);
 void	move_player(t_window *win, int move_x, int move_y);
 
-// Utils2
+// Program Utils
 void	exit_program(t_window *win);
 
-// Map utils
+// Map Utils
 char **allocate_map(char *filename, t_window *win);
 void	deallocate_map(char **map);
 
