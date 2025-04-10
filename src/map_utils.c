@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 15:27:48 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:42:14 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ char **allocate_map(char *filename)
 	line = get_next_line(fd);
 	while(line != NULL)
 	{
-		// if (i < n_lines)
-		// {
-		// 	printf("deallocate map");
-		// 	deallocate_map(map, i);
-		// 	return(ft_printf("Allocation error\n"), NULL);
-		// }
 		printf("alloco %s di lunghezza %ld\n", line, ft_strlen(line));
 		map[i] = line;
 		line = get_next_line(fd);
@@ -57,12 +51,15 @@ char **allocate_map(char *filename)
 	return (map);
 }
 
-void	deallocate_map(char **map, int i)
+void deallocate_map(char **map)
 {
-	while (i >= 0)
+	int i;
+
+	i = 0;
+	while (map[i] != NULL)
 	{
 		free(map[i]);
-		i--;
+		i++;
 	}
 	free(map);
 }

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 13:50:49 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:42:39 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int main(void)
 	// Creo finestra
 	win.win = mlx_new_window(win.mlx, win.map_width * TILE, win.map_height * TILE, "so_long");
 	if (!win.win)
-		return (1);
+	{
+		write(2, "Errore nel caricamento delle immagini\n", 39);
+		return(exit_program(&win), 1);
+	}
 
 	// STRING
 	// mlx_string_put(win.mlx, win.win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
@@ -64,7 +67,7 @@ int main(void)
 	if (!win.img_floor || !win.img_wall || !win.img_player || !win.img_collect || !win.img_exit)
 	{
 		write(2, "Errore nel caricamento delle immagini\n", 39);
-		exit(1);
+		exit_program(&win);
 	}
 
 	render_map(&win);
@@ -90,6 +93,6 @@ int main(void)
 
 	// mlx_clear_window(mlx, win);
 	mlx_loop(win.mlx);
-	deallocate_map(win.map, win.map_height);
+	deallocate_map(win.map);
 	return (0);
 }
