@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 04:15:26 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:27:48 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char **allocate_map(char *filename)
 	// ALLOCAZIONE COLONNE!!!--------------------------------
 	n_lines = count_lines(filename);
 	printf("n lines: %d\n", n_lines);
-	map = ft_calloc(n_lines, sizeof(char *));
+	map = ft_calloc(n_lines + 1, sizeof(char *));
 	if (!map)
 		return (ft_printf("Map not allocated properly\n"), NULL);
 
@@ -52,17 +52,17 @@ char **allocate_map(char *filename)
 		line = get_next_line(fd);
 		i++;
 	}
+	map[i] = NULL;
 	close(fd);
 	return (map);
 }
-
 
 void	deallocate_map(char **map, int i)
 {
 	while (i >= 0)
 	{
 		free(map[i]);
+		i--;
 	}
 	free(map);
 }
-
