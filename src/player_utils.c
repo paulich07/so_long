@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:10 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/11 21:46:24 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:40:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,42 @@ void	initialize_player_position(t_window *win)
 		printf("pos x %d\n", win->pos_x);
 }
 
+int	all_coins_collected(t_window *win)
+{
+	if (!win)
+		return (0);
+  if (win->n_coins == win->n_collected_coins)
+  {
+	  return (1);
+  }
+  return (0);
+}
+
 void	move_player(t_window *win, int move_x, int move_y)
 {
-  if (is_walkable(win, win->pos_x + move_x, win->pos_y + move_y)
-    && !is_exit(win, win->pos_y + move_y, win->pos_x + move_x))
+  if (is_exit(win, win->pos_y + move_y, win->pos_x + move_x)
+    && !all_coins_collected(win))
   {
-    if (win->map[win->pos_y][win->pos_x] == 'C')
+    printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
+    return ;
+  }
+  if (is_exit(win, win->pos_y + move_y, win->pos_x + move_x) && all_coins_collected(win))
+    exit_program(win);
+  if (is_walkable(win, win->pos_x + move_x, win->pos_y + move_y))
+  {
+    if (win->map[win->pos_y + move_y][win->pos_x + move_x] == 'C')
+    {
       win->n_collected_coins++;
-
-    printf("is walkable\n");
+      printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
+    }
     win->map[win->pos_y][win->pos_x] = '0';
     win->pos_x += move_x;
     win->pos_y += move_y;
     win->map[win->pos_y][win->pos_x] = 'P';
     render_map(win);
-
-    if (is_exit(win, win->pos_y, win->pos_x) && all_coins_collected(win))
-      exit_program(win);
+    return ;
   }
-  else
-    printf("not walkable\n");
-}
-
-int	all_coins_collected(t_window *win)
-{
-	if (!win || !win->n_coins || !win->n_collected_coins)
-		return (0);
-	return (win->n_coins == win->n_collected_coins);
+  printf("not walkable\n");
 }
 
 int	is_exit(t_window *win, int pos_y, int pos_x)
