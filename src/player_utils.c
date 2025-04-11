@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:10 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/12 00:46:20 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:53:26 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,16 @@ void	initialize_player_position(t_window *win)
     x = 0;
     while (x < win->map_width)
     {
-        if (win->map[y][x] == 'P')
-        {
-            win->pos_x = x;
-            win->pos_y = y;
-            return ;
-        }
-        x++;
-			}
-			y++;
+      if (win->map[y][x] == 'P')
+      {
+          win->pos_x = x;
+          win->pos_y = y;
+          return ;
+      }
+      x++;
     }
-		printf("pos y %d\n", win->pos_y);
-		printf("pos x %d\n", win->pos_x);
+    y++;
+  }
 }
 
 int	all_coins_collected(t_window *win)
@@ -44,9 +42,7 @@ int	all_coins_collected(t_window *win)
 	if (!win)
 		return (0);
   if (win->n_coins == win->n_collected_coins)
-  {
 	  return (1);
-  }
   return (0);
 }
 
@@ -55,7 +51,7 @@ void	move_player(t_window *win, int move_x, int move_y)
   if (is_exit(win, win->pos_y + move_y, win->pos_x + move_x)
     && !all_coins_collected(win))
   {
-    printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
+    ft_printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
     return ;
   }
   if (is_exit(win, win->pos_y + move_y, win->pos_x + move_x) && all_coins_collected(win))
@@ -65,7 +61,7 @@ void	move_player(t_window *win, int move_x, int move_y)
     if (win->map[win->pos_y + move_y][win->pos_x + move_x] == 'C')
     {
       win->n_collected_coins++;
-      printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
+      ft_printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
     }
     win->map[win->pos_y][win->pos_x] = '0';
     win->pos_x += move_x;
@@ -74,7 +70,7 @@ void	move_player(t_window *win, int move_x, int move_y)
     render_map(win);
     return ;
   }
-  printf("not walkable\n");
+  ft_printf("not walkable\n");
 }
 
 int	is_exit(t_window *win, int pos_y, int pos_x)
