@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/11 21:16:23 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:45:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_press(int keycode, t_window *win)
 {
 	if (keycode == XK_Escape)
-		exit_program(win);
+		exit_program(win, "Exit");
 	else if (keycode == XK_Left)
 	{
 		printf("Freccia sinistra!\n");

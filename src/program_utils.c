@@ -6,13 +6,13 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/11 23:17:58 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:46:33 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	exit_program(t_window *win)
+void	exit_program(t_window *win, char *s)
 {
 	deallocate_map(win->map);
 	if (win->img_floor)
@@ -32,12 +32,14 @@ void	exit_program(t_window *win)
 		mlx_destroy_display(win->mlx);
 		free(win->mlx);
 	}
-	write(2, "Exit\n", 5);
+	if (s)
+		ft_printf("%s\n", s);
+	// write(2, "Exit\n", 5);
 	exit(0);
 }
 
 int  close_window(t_window *win)
 {
-	exit_program(win);
+	exit_program(win, "Window closed");
 	return (0);
 }

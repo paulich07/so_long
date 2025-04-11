@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/11 21:16:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:44:45 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,20 @@ char **allocate_map(char *filename, t_window *win)
 	int	i;
 
 	if (!filename)
-	{
-		ft_printf("Filename not specified\n");
-		exit_program(win);
-	}
+		exit_program(win, "Filename not specified");
 	n_lines = count_lines(filename);
 	printf("n lines: %d\n", n_lines);
 	map = ft_calloc(n_lines + 1, sizeof(char *));
 	if (!map)
-	{
-		ft_printf("Map not allocated properly\n");
-		exit_program(win);
-	}
+		exit_program(win, "Map not allocated properly");
 	i = 0;
 	if (!filename)
-	{
-		ft_printf("File is not valid\n");
-		exit_program(win);
-	}
+		exit_program(win, "File is not valid");
 	if (!is_valid_filename(filename))
-	{
-		ft_printf("File not provided\n");
-		exit_program(win);
-	}
+		exit_program(win, "File not provided");
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("Error in file opening\n");
-		exit_program(win);
-	}
+		exit_program(win, "Error in file opening");
 	line = get_next_line(fd);
 	while(line != NULL)
 	{

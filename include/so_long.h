@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/11 21:50:12 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:43:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct	s_data {
 	int		pos_y;
 	int		map_height;
 	int		map_width;
-	// Parsing
+	// Coins
 	int		n_coins;
 	int		n_collected_coins;
 } t_window;
@@ -63,7 +63,7 @@ int		all_coins_collected(t_window *win);
 int		is_exit(t_window *win, int pos_y, int pos_x);
 
 // Program Utils
-void	exit_program(t_window *win);
+void	exit_program(t_window *win, char *s);
 int		close_window(t_window *win);
 
 // Map Utils

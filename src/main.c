@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/11 23:18:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/12 00:46:01 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int main(void)
 
 	map = allocate_map(filename, &win);
 	if (!map)
-	{
-		ft_printf("Map not allocated properly\n");
-		exit_program(&win);
-	}
+		exit_program(&win, "Map not allocated properly");
 	win.map = map;
 
 	win.n_collected_coins = 0;
@@ -55,10 +52,7 @@ int main(void)
 	// Creo finestra
 	win.win = mlx_new_window(win.mlx, win.map_width * TILE, win.map_height * TILE, "so_long");
 	if (!win.win)
-	{
-		write(2, "Errore nel caricamento delle immagini\n", 39);
-		exit_program(&win);
-	}
+		exit_program(&win, "Window not loaded properly");
 
 	// STRING
 	// mlx_string_put(win.mlx, win.win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
@@ -74,10 +68,7 @@ int main(void)
 	win.img_exit = mlx_xpm_file_to_image(win.mlx, "textures/exit.xpm", &img_width, &img_height);
 
 	if (!win.img_floor || !win.img_wall || !win.img_player || !win.img_collect || !win.img_exit)
-	{
-		write(2, "Errore nel caricamento delle immagini\n", 39);
-		exit_program(&win);
-	}
+		exit_program(&win, "Image not loaded properly");
 
 	render_map(&win);
 
