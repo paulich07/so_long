@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 17:19:50 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:50:36 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int main(void)
 
 	filename = "maps/map.ber";
 
+	// Parsing mappa
+	// ---- to do here
+
 	map = allocate_map(filename, &win);
 	if (!map)
 	{
@@ -30,7 +33,10 @@ int main(void)
 	}
 	win.map = map;
 
-	// To do checker posizione P
+	win.n_collected_coins = 0;
+	win.n_coins = 0;
+	count_coins(&win);
+
 	// Inizializza libreria
 	win.mlx = mlx_init();
 	if (!win.mlx)

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 17:31:48 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:05:39 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ void	exit_program(t_window *win)
 	}
 	write(2, "Exit\n", 5);
 	exit(0);
+}
+
+int  close_window(t_window *win)
+{
+	exit_program(win);
+	return (0);
 }
