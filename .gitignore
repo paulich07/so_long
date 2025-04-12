@@ -1,5 +1,4 @@
 ./libs/minilibx-linux/
 ./obj/
 *.o
-*.a
-so_long
+./so_long
