@@ -1,8 +1,0 @@
-{
-  "files.associations": {
-    "x.h": "c",
-    "keysym.h": "c",
-    "stdlib.h": "c",
-    "so_long.h": "c"
-  }
-}

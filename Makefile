@@ -16,10 +16,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -I$(HEADERS_DIR) -I$(SRC_DIR) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 
 # Linker/Loader ld
-# Serve anche -Imlx ?
-LDFLAGS = $(LIBFT_FLAGS) $(MINILIBX_FLAGS)
-LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
-MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
+LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 
 # Sources
 SRCS =	$(SRC_DIR)/main.c \
@@ -48,7 +45,7 @@ $(NAME):  $(MINILIBX) $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 $(LIBFT):
-	@echo "---- Compiling libft"
+	@echo "---- Libft not found"
 
 $(MINILIBX): | $(MINILIBX_DIR)
 	@echo "---- Compiling minilibx-linux"
