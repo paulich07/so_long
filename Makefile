@@ -1,3 +1,15 @@
+# === Colors ===
+RED     	= \033[0;31m
+GREEN   	= \033[0;32m
+YELLOW  	= \033[0;33m
+BLUE    	= \033[0;34m
+MAGENTA 	= \033[0;35m
+CYAN    	= \033[0;36m
+RESET   	= \033[0m
+BOLD		= \033[1m
+UNDERLINE 	= \033[4;32m
+GREEN_BG 	= \033[42m
+
 NAME = so_long
 
 # Paths
@@ -37,47 +49,47 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Commands (da includere minilibx)
 all: $(NAME)
-	@echo "---- Building executable $(NAME)"
+	@echo "$(GREEN)---- Building of $(NAME) ----$(RESET)";
 
 # to do includere minilibx
 $(NAME):  $(MINILIBX) $(OBJS) $(LIBFT)
-	@echo "---- Linking target $@ ---- using $^ ----"
+	@echo "$(CYAN)---- Linking target $@ ---- $(RESET)using $^"
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 $(LIBFT):
-	@echo "---- Libft not found"
+	@echo "$(RED)---- Libft not found ----$(RESET)"
 
 $(MINILIBX): | $(MINILIBX_DIR)
-	@echo "---- Compiling minilibx-linux"
+	@echo "$(YELLOW)---- Compiling $< $(RESET) ----> $@"
 	@$(MAKE) -C $(MINILIBX_DIR) --quiet
 
 $(MINILIBX_DIR):
-	@echo "---- minilibx-linux directory not found, downloading and extracting"
+	@echo "$(YELLOW)---- minilibx-linux directory not found, downloading and extracting$(RESET)"
 	@curl -L $(MINILIBX_URL) | tar xz -C $(LIB_DIR)
 	@echo "---- removing minilibx-linux.tgz"
 	@rm -f $(LIB_DIR)/minilibx-linux.tgz
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@echo "---- Compiling $< ----> $@ ----"
+	@echo "$(YELLOW)---- Compiling $< $(RESET) ----> $@"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	@echo "---- Create folder $@"
+	@echo "$(MAGENTA)---- Create folder $@ $(RESET)"
 	mkdir -p $(OBJ_DIR)
 
 # Remove only temporary files
 clean:
-	@echo "---- Removing $(OBJS)" 
+	@echo "$(RED)---- Removing .o files in $(NAME)----$(RESET)"
 	@rm -rf $(OBJ_DIR) 
-	@echo "---- cleaning minilibx"
+	@echo "---- cleaning minilibx ----"
 	@$(MAKE) clean -C $(MINILIBX_DIR)
 
 # Remove temporary files and executables
 fclean: clean 
-	@echo "---- Removing executable $(NAME)" 
+	@echo "$(RED)---- Removing executable $(NAME) ----$(RESET)"
 	@rm -f $(NAME)
-	@echo "---- cleaning minilibx"
-	@$(MAKE) clean -C $(MINILIBX_DIR) 
+	@echo "$(RED)---- cleaning minilibx ----$(RESET)"
+	@$(MAKE) clean -C $(MINILIBX_DIR)
 
 re: fclean all 
  
