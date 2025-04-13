@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/12 00:46:01 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 08:33:07 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(void)
+// int main(void)
+int main(int argc, char *argv[])
 {
 	t_window    win;
 	char	**map;
@@ -20,13 +21,22 @@ int main(void)
 	int img_width;
 	int img_height;
 
-	filename = "maps/map.ber";
+	if (argc != 2)
+		return (ft_printf("Usage: ./so_long <map.ber>\n"), 1);
+	
+	filename = argv[1];
+	
+	if (!is_valid_filename(filename))
+		return (ft_printf("Invalid file format\n"), 1);
+	if (is_directory(filename))
+		return (ft_printf("Directory instead of file provided\n"), 1);
+	// filename = "map/map.ber";
 
 	// Parsing mappa
 	// ---- to do here
-
-	map = allocate_map(filename, &win);
-	if (!map)
+	printf("allocate map\n");
+	map = allocate_map(&win, filename);
+	if (!map || !*map)
 		exit_program(&win, "Map not allocated properly");
 	win.map = map;
 

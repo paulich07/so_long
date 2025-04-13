@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/12 00:53:44 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 08:35:54 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	exit_program(t_window *win, char *s)
 {
-	deallocate_map(win->map);
+	deallocate_map(win->map, win->map_height);
 	if (win->img_floor)
-    mlx_destroy_image(win->mlx, win->img_floor);
+    	mlx_destroy_image(win->mlx, win->img_floor);
 	if (win->img_wall)
 		mlx_destroy_image(win->mlx, win->img_wall);
 	if (win->img_player)
@@ -32,7 +32,7 @@ void	exit_program(t_window *win, char *s)
 		mlx_destroy_display(win->mlx);
 		free(win->mlx);
 	}
-	if (s)
+	if (*s)
 		ft_printf("%s\n", s);
 	exit(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/12 00:43:47 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 08:27:40 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 # include "libft.h"
 # include "mlx.h"
-#	include <X11/keysym.h>
-#	include <X11/X.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include <fcntl.h>
 
 typedef struct	s_data {
@@ -48,8 +48,9 @@ typedef struct	s_data {
 int		key_press(int keycode, t_window *vars);
 
 // Parsing
-int		count_lines(char *filename);
+int		count_lines(t_window *win, char *filename);
 int		is_valid_filename(char *filename);
+int		is_directory(char *filename);
 
 // Utils
 void	render_map(t_window *win);
@@ -67,7 +68,7 @@ void	exit_program(t_window *win, char *s);
 int		close_window(t_window *win);
 
 // Map Utils
-char **allocate_map(char *filename, t_window *win);
-void	deallocate_map(char **map);
+char	**allocate_map(t_window *win, char *filename);
+void	deallocate_map(char **map, int height);
 
 #endif
