@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 09:47:26 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 16:22:37 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	exit_program(t_window *win, char *s)
 {
 	deallocate_map(win->map, win->map_height);
+	// deallocate_map_copy(win->map_copy, win->map_height);
 	if (win->img_floor)
     	mlx_destroy_image(win->mlx, win->img_floor);
 	if (win->img_wall)
