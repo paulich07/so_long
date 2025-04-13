@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:38:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 10:03:44 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:29:58 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int is_directory(char *filename)
   return (close(fd), 1);
 }
 
-/// @brief count number of lines in a file containing a map and save it in the win struct
+/// @brief count number of lines in the file and set the map_height in the struct
 /// @param win window structure that contains everything
 /// @param filename string that contains the name of the file of the map
 /// @return number of lines = height of the map

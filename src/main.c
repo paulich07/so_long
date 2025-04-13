@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 10:13:57 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:32:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 	// char	**map_cpy;
 	char	*filename;
 
-
 	if (argc != 2)
 		return (ft_printf("Usage: ./so_long <map.ber>\n"), 1);
 	filename = argv[1];
@@ -29,13 +28,17 @@ int main(int argc, char *argv[])
 	if (is_directory(filename))
 		return (ft_printf("Directory instead of file provided\n"), 1);
 
-	map = allocate_map(&win, filename);
-	if (!map || !*map)
+	win.map = allocate_map(&win, filename);
+	if (!win.map || !*win.map)
 		exit_program(&win, "Map not allocated properly");
-	win.map = map;
+	// win.map = map;
 
 	// --------------------------Parsing mappa
 	// creo copia matrice
+	
+	map = copy_map(&win);
+
+	
 	// controllo walls
 	// controllo players/collectables/exit e caratteri non validi
 	// flood fill a partire da pos player mentre raccolgo collectables, ed exit
@@ -51,10 +54,10 @@ int main(int argc, char *argv[])
 	if (!win.mlx)
 		return (1);
 	
-	win.map_width = ft_strlen(map[0]);
+	win.map_width = ft_strlen(win.map[0]);
 	win.map_width--;
 	win.map_height = 0;
-	while (map[win.map_height])
+	while (win.map[win.map_height])
 		win.map_height++;
 
 	initialize_player_position(&win);

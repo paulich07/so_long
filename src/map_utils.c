@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 10:14:05 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:36:45 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,35 @@ char **allocate_map(t_window *win, char *filename)
 	if (fd < 0)
 		exit_program(win, "Error in file opening");
 	line = get_next_line(fd);
+	while(line != NULL)
+	{
+		ft_printf("alloco [%d] %s di lunghezza %ld\n", i, line, ft_strlen(line));
+		map[i] = line;
+		line = get_next_line(fd);
+		i++;
+	}
+	map[i] = NULL;
+	close(fd);
+	return (map);
+}
+
+char **copy_map(t_window *win)
+{
+	char	**map;
+	int	i;
+
+	if (!win->map)
+		exit_program(win, "Map not saved properly: impossible to copy");
+	if (win->map_height < 1)
+		exit_program(win, "Map height not appropriate");
+	if (win->map_width < 1)
+		exit_program(win, "Map width not appropriate");		
+	ft_printf("n lines: %d\n", win->map_height);
+	map = ft_calloc(win->map_height + 1, sizeof(char *));
+	if (!map)
+		exit_program(win, "Map not allocated properly");
+	
+	i = 0;
 	while(line != NULL)
 	{
 		ft_printf("alloco [%d] %s di lunghezza %ld\n", i, line, ft_strlen(line));
