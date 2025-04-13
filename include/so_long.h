@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 08:49:38 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:12:19 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int		close_window(t_window *win);
 // Map Utils
 char	**allocate_map(t_window *win, char *filename);
 void	deallocate_map(char **map, int height);
+void	put_images(t_window *win);
 
 #endif

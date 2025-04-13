@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 09:53:46 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:14:05 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ char **allocate_map(t_window *win, char *filename)
 	n_lines = count_lines(win, filename);	
 	if (n_lines < 1)
 		exit_program(win, "No lines to read");		
-	printf("n lines: %d\n", n_lines);
-	
+	ft_printf("n lines: %d\n", n_lines);
 	map = ft_calloc(n_lines + 1, sizeof(char *));
 	if (!map)
 		exit_program(win, "Map not allocated properly");
@@ -41,7 +40,6 @@ char **allocate_map(t_window *win, char *filename)
 		map[i] = line;
 		line = get_next_line(fd);
 		i++;
-		// SE GET NEXT LINE FALLISCE???!1
 	}
 	map[i] = NULL;
 	close(fd);
@@ -53,11 +51,29 @@ void deallocate_map(char **map, int height)
 	int i;
 
 	i = 0;
-	ft_printf("deallocate map\n");
+	// ft_printf("deallocate map\n");
 	while (i < height)
 	{
 		free(map[i]);
 		i++;
 	}
 	free(map);
+}
+
+void	put_images(t_window *win)
+{
+	int img_width;
+	int img_height;
+	
+	img_width = TILE;
+	img_height = TILE;
+
+	win->img_floor = mlx_xpm_file_to_image(win->mlx, "textures/floor.xpm", &img_width, &img_height);
+	win->img_wall = mlx_xpm_file_to_image(win->mlx, "textures/wall.xpm", &img_width, &img_height);
+	win->img_player = mlx_xpm_file_to_image(win->mlx, "textures/player.xpm", &img_width, &img_height);
+	win->img_collect = mlx_xpm_file_to_image(win->mlx, "textures/collect.xpm", &img_width, &img_height);
+	win->img_exit = mlx_xpm_file_to_image(win->mlx, "textures/exit.xpm", &img_width, &img_height);
+
+	if (!win->img_floor || !win->img_wall || !win->img_player || !win->img_collect || !win->img_exit)
+		exit_program(win, "Image not loaded properly");
 }

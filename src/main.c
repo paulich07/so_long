@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 09:50:11 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:13:57 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,33 @@ int main(int argc, char *argv[])
 {
 	t_window    win = {0};
 	char	**map;
+	// char	**map_cpy;
 	char	*filename;
-	int img_width;
-	int img_height;
+
 
 	if (argc != 2)
 		return (ft_printf("Usage: ./so_long <map.ber>\n"), 1);
-	
 	filename = argv[1];
-	// filename = "map/map.ber";
-	
 	if (!is_valid_filename(filename))
 		return (ft_printf("Invalid file format\n"), 1);
 	if (is_directory(filename))
 		return (ft_printf("Directory instead of file provided\n"), 1);
 
-	// Parsing mappa
-	// ---- to do here
-	printf("allocate map\n");
 	map = allocate_map(&win, filename);
 	if (!map || !*map)
 		exit_program(&win, "Map not allocated properly");
 	win.map = map;
 
-	win.n_collected_coins = 0;
-	win.n_coins = 0;
+	// --------------------------Parsing mappa
+	// creo copia matrice
+	// controllo walls
+	// controllo players/collectables/exit e caratteri non validi
+	// flood fill a partire da pos player mentre raccolgo collectables, ed exit
+	
+	
+
+	// win.n_collected_coins = 0;
+	// win.n_coins = 0;
 	count_coins(&win);
 
 	// Inizializza libreria
@@ -68,18 +70,7 @@ int main(int argc, char *argv[])
 	// mlx_string_put(win.mlx, win.win, 10, 10, 0xFFFFFF, "Ciao Minilibx!");
 
 	// IMAGE
-	img_width = TILE;
-	img_height = TILE;
-
-	win.img_floor = mlx_xpm_file_to_image(win.mlx, "textures/floor.xpm", &img_width, &img_height);
-	win.img_wall = mlx_xpm_file_to_image(win.mlx, "textures/wall.xpm", &img_width, &img_height);
-	win.img_player = mlx_xpm_file_to_image(win.mlx, "textures/player.xpm", &img_width, &img_height);
-	win.img_collect = mlx_xpm_file_to_image(win.mlx, "textures/collect.xpm", &img_width, &img_height);
-	win.img_exit = mlx_xpm_file_to_image(win.mlx, "textures/exit.xpm", &img_width, &img_height);
-
-	if (!win.img_floor || !win.img_wall || !win.img_player || !win.img_collect || !win.img_exit)
-		exit_program(&win, "Image not loaded properly");
-
+	put_images(&win);
 	render_map(&win);
 
 	// pixels = (int *)mlx_get_data_addr(img, &bpp, &size_line, &endian);
