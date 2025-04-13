@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 08:33:07 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/13 09:50:11 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // int main(void)
 int main(int argc, char *argv[])
 {
-	t_window    win;
+	t_window    win = {0};
 	char	**map;
 	char	*filename;
 	int img_width;
@@ -25,12 +25,12 @@ int main(int argc, char *argv[])
 		return (ft_printf("Usage: ./so_long <map.ber>\n"), 1);
 	
 	filename = argv[1];
+	// filename = "map/map.ber";
 	
 	if (!is_valid_filename(filename))
 		return (ft_printf("Invalid file format\n"), 1);
 	if (is_directory(filename))
 		return (ft_printf("Directory instead of file provided\n"), 1);
-	// filename = "map/map.ber";
 
 	// Parsing mappa
 	// ---- to do here
