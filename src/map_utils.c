@@ -6,52 +6,11 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 22:55:59 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:11:55 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	**allocate_map(t_window *win, char *filename)
-{
-	char	**map;
-	char	*line;
-	int		fd;
-	int		i;
-
-	if (!filename)
-		exit_program(win, "Filename not specified", 1);
-	if (!is_valid_map_size(win, filename))
-		exit_program(win, "Map is not rectangular or contains empty spaces", 1);
-	map = ft_calloc(win->map_height + 1, sizeof(char *));
-	if (!map)
-		exit_program(win, "Map not allocated properly", 1);
-	i = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		exit_program(win, "Error in file opening", 1);
-	line = get_next_line(fd);
-	if (!line)
-	{
-		close(fd);
-		exit_program(win, "Error: first line of map empty", 1);
-	}
-	win->map_width = ft_strlen(line);
-	if (line[(ft_strlen(line)) - 1] == '\n')
-		line[(ft_strlen(line)) - 1] = '\0';
-	win->map_width = ft_strlen(line);
-	while (line != NULL)
-	{
-		if (line[(ft_strlen(line)) - 1] == '\n')
-			line[(ft_strlen(line)) - 1] = '\0';
-		map[i] = line;
-		line = get_next_line(fd);
-		i++;
-	}
-	map[i] = NULL;
-	close(fd);
-	return (map);
-}
 
 void deallocate_map(char **map, int height)
 {
