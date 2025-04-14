@@ -50,10 +50,10 @@ LIBFT_CLEAN_ENABLED ?= 1
 
 # Commands (da includere minilibx)
 all: $(NAME)
-	@echo "$(GREEN)---- Building of $(NAME) ----$(RESET)";
 
 # to do includere minilibx
 $(NAME):  $(MINILIBX) $(OBJS) $(LIBFT)
+	@echo "$(GREEN)---- Building of $(NAME) ----$(RESET)";
 	@echo "$(CYAN)---- Linking target $@ ---- $(RESET)using $^"
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
@@ -91,7 +91,7 @@ ifeq ($(LIBFT_CLEAN_ENABLED),1)
 endif
 
 # Remove temporary files and executables
-fclean: clean 
+fclean: clean
 	@if [ -n "$(NAME)" ] && [ -e "$(NAME)" ]; then \
 		echo "$(RED)---- Removing executable $(NAME)...$(RESET)"; \
 		rm -f $(NAME); \
@@ -103,5 +103,5 @@ fclean: clean
 	@$(MAKE) clean -C $(MINILIBX_DIR)
 
 re: fclean all
- 
+
 .PHONY: all clean fclean re

@@ -47,9 +47,14 @@ void	flood_fill(t_window *win, t_elements *elem, int curr_y, int curr_x)
 		|| curr_x < 0 || curr_x > win->map_width
 		|| win->map_copy[curr_y][curr_x] == '1'
 		|| win->map_copy[curr_y][curr_x] == 'R'
-		|| win->map_copy[curr_y][curr_x] == 'E'
 	)
 		return ;
+	if (win->map_copy[curr_y][curr_x] == 'E')
+	{
+		elem->n_exit++;
+		win->map_copy[curr_y][curr_x] = 'R';
+		return ;
+	}
 	if (win->map_copy[curr_y][curr_x] == 'C')
 		elem->n_coins++;
 	if (win->map_copy[curr_y][curr_x] == 'P')
