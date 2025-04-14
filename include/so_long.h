@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 17:00:33 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:54:16 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		close_window(t_window *win);
 // Map Utils
 char	**allocate_map(t_window *win, char *filename);
 void	deallocate_map(char **map, int height);
-char **copy_map(t_window *win);
+void	copy_map(t_window *win);
 void	put_images(t_window *win);
 
 #endif
