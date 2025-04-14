@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:24:28 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:25:00 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	flood_fill(t_window *win, t_elements *elem, int curr_y, int curr_x)
 		elem->n_exit++;
 	if (win->map_copy[curr_y][curr_x] == 'P')
 		elem->n_players++;
-	// check if all collectables are reachable
 	win->map_copy[curr_y][curr_x] = 'R';
 	flood_fill(win, elem, curr_y + 1, curr_x);
 	flood_fill(win, elem, curr_y - 1, curr_x);
