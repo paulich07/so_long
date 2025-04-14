@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:38:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 23:22:38 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:27:03 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	is_directory(char *filename)
 /// @return 1 if the size i the same, 0 otherwise
 int	check_every_line(t_window *win, int fd, char **l)
 {
-	char *line;
-	
+	char	*line;
+
 	line = *l;
 	while (line)
 	{
@@ -97,30 +97,6 @@ int	is_valid_map_size(t_window *win, char *filename)
 		return (0);
 	}
 	close(fd);
-	return (1);
-}
-
-int	allocate_map_from_file(t_window *win, int fd)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	line = get_next_line(fd);
-	if (!line)
-		return (0);
-	win->map_width = ft_strlen(line);
-	if (line[(ft_strlen(line)) - 1] == '\n')
-		line[(ft_strlen(line)) - 1] = '\0';
-	win->map_width = ft_strlen(line);
-	while (line != NULL)
-	{
-		if (line[(ft_strlen(line)) - 1] == '\n')
-			line[(ft_strlen(line)) - 1] = '\0';
-		win->map[i++] = line;
-		line = get_next_line(fd);
-	}
-	win->map[i] = NULL;
 	return (1);
 }
 

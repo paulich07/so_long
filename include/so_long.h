@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 23:17:50 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:26:22 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int		key_press(int keycode, t_window *vars);
 int		close_window(t_window *win);
 
 // Parsing
-int		is_valid_map_size(t_window *win, char *filename);
 int		is_valid_filename(char *filename);
 int		is_directory(char *filename);
-int		allocate_map_from_file(t_window *win, int fd);
+int		check_every_line(t_window *win, int fd, char **l);
+int		is_valid_map_size(t_window *win, char *filename);
 void	check_and_allocate_map(t_window *win, char *filename);
 
 // Map parsing
@@ -91,10 +91,10 @@ int		is_exit(t_window *win, int pos_y, int pos_x);
 void	exit_program(t_window *win, char *s, int error);
 
 // Map Utils
-
 void	deallocate_map(char **map, int height);
 void	copy_map(t_window *win);
 void	put_images(t_window *win);
 void	render_map(t_window *win);
+int		allocate_map_from_file(t_window *win, int fd);
 
 #endif
