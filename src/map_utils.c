@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 16:13:24 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:55:54 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ char **allocate_map(t_window *win, char *filename)
 
 	if (!filename)
 		exit_program(win, "Filename not specified");
-	win->map_height = count_lines(win, filename);
-	if (win->map_height < 1)
-		exit_program(win, "No lines to read");		
+	if (!is_valid_map_size(win, filename))
+		exit_program(win, "Map is not valid");
+	// if (win->map_height < 1)
+	// 	exit_program(win, "No lines to read");		
 	map = ft_calloc(win->map_height + 1, sizeof(char *));
 	if (!map)
 		exit_program(win, "Map not allocated properly");
@@ -33,15 +34,21 @@ char **allocate_map(t_window *win, char *filename)
 		exit_program(win, "Error in file opening");
 	line = get_next_line(fd);
 	if (!line)
+	{
+		close(fd);
 		exit_program(win, "Error: first line of map empty");
+	}
 	win->map_width = ft_strlen(line);
-	if (line[win->map_width - 1] == '\n')
-		line[win->map_width - 1] = '\0';
+	if (line[(ft_strlen(line)) - 1] == '\n')
+		line[(ft_strlen(line)) - 1] = '\0';
 	win->map_width = ft_strlen(line);
 	while(line != NULL)
 	{
 		if (line[(ft_strlen(line)) - 1] == '\n')
 			line[(ft_strlen(line)) - 1] = '\0';
+		// printf("check if size of line is valid\n");
+		// if ((int)(ft_strlen(line)) != win->map_width)
+		// 	exit_program(win, "Map is not rectangular");
 		map[i] = line;
 		line = get_next_line(fd);
 		i++;
@@ -111,4 +118,34 @@ void	put_images(t_window *win)
 
 	if (!win->img_floor || !win->img_wall || !win->img_player || !win->img_collect || !win->img_exit)
 		exit_program(win, "Image not loaded properly");
+}
+
+void	render_map(t_window *win)
+{
+	char	tile;
+	int	x;
+	int	y;
+
+	y = 0;
+	while (win->map[y])
+	{
+		x = 0;
+		while (win->map[y][x])
+		{
+			tile = win->map[y][x];
+
+			if (tile == '1')
+				mlx_put_image_to_window(win->mlx, win->win, win->img_wall, x * TILE, y * TILE);
+			else if (tile == '0')
+				mlx_put_image_to_window(win->mlx, win->win, win->img_floor, x * TILE, y * TILE);
+			else if (tile == 'P')
+				mlx_put_image_to_window(win->mlx, win->win, win->img_player, x * TILE, y * TILE);
+			else if (tile == 'C')
+				mlx_put_image_to_window(win->mlx, win->win, win->img_collect, x * TILE, y * TILE);
+			else if (tile == 'E')
+				mlx_put_image_to_window(win->mlx, win->win, win->img_exit, x * TILE, y * TILE);
+			x++;
+		}
+		y++;
+	}
 }

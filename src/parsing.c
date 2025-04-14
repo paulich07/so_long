@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:38:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 16:24:32 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:01:15 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ int is_directory(char *filename)
   return (close(fd), 1);
 }
 
-/// @brief count number of lines in the file and set the map_height in the struct
+/// @brief calculate height and width of the map, check if the map is rectangular
 /// @param win window structure that contains everything
 /// @param filename string that contains the name of the file of the map
-/// @return number of lines = height of the map
-int count_lines(t_window *win, char *filename)
+/// @return bool 1 if is rectangular or 0 otherwise
+int is_valid_map_size(t_window *win, char *filename)
 {
   int fd;
   char  *line;
@@ -57,14 +57,31 @@ int count_lines(t_window *win, char *filename)
   if (fd < 0)
     exit_program(win, "Cannot open file");
   line = get_next_line(fd);
+  if (!line)
+    return (close(fd), 0);
+  // check length
+  win->map_width = ft_strlen(line);
+  if (line[(ft_strlen(line)) - 1] == '\n')
+    line[(ft_strlen(line)) - 1] = '\0';
+	win->map_width = ft_strlen(line);
+  if (win->map_width <= 0)
+    return (free(line), 0);
   while(line)
   {
     win->map_height++;
-    free(line);
     // printf("%s\n", line);
+		if (line[(ft_strlen(line)) - 1] == '\n')
+			line[(ft_strlen(line)) - 1] = '\0';
+    if ((int)(ft_strlen(line)) != win->map_width)
+    {
+      free(line);
+      close(fd);
+      return (0);
+    }
+    free(line);
     line = get_next_line(fd);
   }
   free(line);
   close(fd);
-  return (win->map_height);
+  return (1);
 }

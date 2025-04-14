@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 15:52:08 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:58:13 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
 	win.map = allocate_map(&win, filename);
 	if (!win.map || !*win.map)
 		exit_program(&win, "Map not allocated properly");
-	// win.map = map;
 
 	// --------------------------Parsing mappa
 	copy_map(&win);

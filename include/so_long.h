@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 15:47:45 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:42:42 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_data {
 int		key_press(int keycode, t_window *vars);
 
 // Parsing
-int		count_lines(t_window *win, char *filename);
+int		is_valid_map_size(t_window *win, char *filename);
 int		is_valid_filename(char *filename);
 int		is_directory(char *filename);
 
@@ -58,7 +58,6 @@ int		contains_only(char *s, char *allowed);
 void	check_walls(t_window *win, char **map);
 
 // Utils
-void	render_map(t_window *win);
 int		is_walkable(t_window *win, int x, int y);
 void	count_coins(t_window *win);
 
@@ -77,5 +76,6 @@ char	**allocate_map(t_window *win, char *filename);
 void	deallocate_map(char **map, int height);
 void	copy_map(t_window *win);
 void	put_images(t_window *win);
+void	render_map(t_window *win);
 
 #endif
