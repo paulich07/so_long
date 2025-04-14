@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 14:41:06 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:57:21 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,12 @@ int main(int argc, char *argv[])
 
 	// --------------------------Parsing mappa
 	copy_map(&win);
-
-
-	
-	deallocate_map(win.map_copy, win.map_height);
-	
 	// controllo walls
 	// controllo players/collectables/exit e caratteri non validi
 	// flood fill a partire da pos player mentre raccolgo collectables, ed exit
 	
+	
+
 	
 
 	// win.n_collected_coins = 0;
