@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:14:20 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:23:36 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ int main(int argc, char *argv[])
 	// controllo players/collectables/exit
 	count_elements(&win);
 	check_counted_elements(&win);
+	initialize_player_position(&win);
 	// flood fill a partire da pos player mentre CONTO collectables, player ed exit
-
-
+	check_reachable(&win);
+	
 	// Inizializza libreria
 	win.mlx = mlx_init();
 	if (!win.mlx)
 		return (1);
 
-	initialize_player_position(&win);
-	
 	// Creo finestra
 	win.win = mlx_new_window(win.mlx, win.map_width * TILE, win.map_height * TILE, "so_long");
 	if (!win.win)

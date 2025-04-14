@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:15:12 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:24:44 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	count_elements(t_window *win)
 		}
 		y++;
 	}
-	printf("coins %d\n", win->n_coins);
+	// ft_printf("coins %d\n players %d\n exit %d\n", win->n_coins, win->n_players, win->n_exit);
 }
 
 void	check_walls(t_window *win, char **map)
@@ -64,4 +64,10 @@ void	check_counted_elements(t_window *win)
 		exit_program(win, "Invalid number of Players (P)");
 	if (win->n_coins < 1)
 		exit_program(win, "Invalid number of Collectables (C)");
+}
+
+void	check_reachable(t_window *win)
+{
+	// check player position
+	// flood fill
 }

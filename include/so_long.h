@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:14:28 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:24:50 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		is_directory(char *filename);
 void	count_elements(t_window *win);
 void	check_walls(t_window *win, char **map);
 void	check_counted_elements(t_window *win);
+void	check_reachable(t_window *win);
 
 // Utils
 int		is_walkable(t_window *win, int x, int y);
