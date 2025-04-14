@@ -19,13 +19,14 @@ MINILIBX_DIR = $(LIB_DIR)/minilibx-linux
 SRC_DIR = src
 OBJ_DIR = obj
 HEADERS_DIR = include
+LIBFT_HEADERS_DIR = $(LIBFT_DIR)/include
 
 # Links
 MINILIBX_URL = https://cdn.intra.42.fr/document/document/31497/minilibx-linux.tgz
 
 # Compiler
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -I$(HEADERS_DIR) -I$(SRC_DIR) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
+CFLAGS = -Wall -Werror -Wextra -g -I$(HEADERS_DIR) -I$(SRC_DIR) -I$(LIBFT_DIR) -I$(LIBFT_HEADERS_DIR) -I$(MINILIBX_DIR)
 
 # Linker/Loader ld
 LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
@@ -45,8 +46,7 @@ MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# ??? fare un comando che faccia anche:
-# sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+LIBFT_CLEAN_ENABLED ?= 1
 
 # Commands (da includere minilibx)
 all: $(NAME)
@@ -58,7 +58,8 @@ $(NAME):  $(MINILIBX) $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 $(LIBFT):
-	@echo "$(RED)---- Libft not found ----$(RESET)"
+	@echo "$(YELLOW)---- Compiling $< $(RESET) ----> $@"
+	$(MAKE) -C $(LIBFT_DIR) --quiet
 
 $(MINILIBX): | $(MINILIBX_DIR)
 	@echo "$(YELLOW)---- Compiling $< $(RESET) ----> $@"
@@ -81,14 +82,23 @@ $(OBJ_DIR):
 # Remove only temporary files
 clean:
 	@echo "$(RED)---- Removing .o files in $(NAME)----$(RESET)"
-	@rm -rf $(OBJ_DIR) 
-	@echo "---- cleaning minilibx ----"
+	@rm -rf $(OBJ_DIR)
+	@echo "$(RED)---- cleaning minilibx ----$(RESET)"
 	@$(MAKE) clean -C $(MINILIBX_DIR)
+ifeq ($(LIBFT_CLEAN_ENABLED),1)
+	@echo "$(RED)---- cleaning libft =---$(RESET)"
+	@$(MAKE) clean -C $(LIBFT_DIR) --silent
+endif
 
 # Remove temporary files and executables
 fclean: clean 
-	@echo "$(RED)---- Removing executable $(NAME) ----$(RESET)"
-	@rm -f $(NAME)
+	@if [ -n "$(NAME)" ] && [ -e "$(NAME)" ]; then \
+		echo "$(RED)---- Removing executable $(NAME)...$(RESET)"; \
+		rm -f $(NAME); \
+	fi
+	@echo "$(RED)---- fcleaning libft ----$(RESET)"
+	@$(MAKE) --no-print-directory LIBFT_CLEAN_ENABLED=0 clean
+	@$(MAKE) fclean -C $(LIBFT_DIR) --silent
 	@echo "$(RED)---- cleaning minilibx ----$(RESET)"
 	@$(MAKE) clean -C $(MINILIBX_DIR)
 
