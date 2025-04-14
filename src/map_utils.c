@@ -6,18 +6,18 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 21:19:31 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 22:55:59 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char **allocate_map(t_window *win, char *filename)
+char	**allocate_map(t_window *win, char *filename)
 {
 	char	**map;
-	char  *line;
-	int fd;
-	int	i;
+	char	*line;
+	int		fd;
+	int		i;
 
 	if (!filename)
 		exit_program(win, "Filename not specified", 1);
@@ -40,7 +40,7 @@ char **allocate_map(t_window *win, char *filename)
 	if (line[(ft_strlen(line)) - 1] == '\n')
 		line[(ft_strlen(line)) - 1] = '\0';
 	win->map_width = ft_strlen(line);
-	while(line != NULL)
+	while (line != NULL)
 	{
 		if (line[(ft_strlen(line)) - 1] == '\n')
 			line[(ft_strlen(line)) - 1] = '\0';
@@ -128,7 +128,6 @@ void	render_map(t_window *win)
 		while (win->map[y][x])
 		{
 			tile = win->map[y][x];
-
 			if (tile == '1')
 				mlx_put_image_to_window(win->mlx, win->win, win->img_wall, x * TILE, y * TILE);
 			else if (tile == '0')

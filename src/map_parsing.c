@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 22:51:06 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 22:53:38 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	check_walls(t_window *win, char **map)
 	int	i;
 
 	i = 1;
-	if (!contains_only(map[0], "1") || !contains_only(map[win->map_height - 1], "1"))
+	if (!contains_only(map[0], "1")
+		|| !contains_only(map[win->map_height - 1], "1"))
 		exit_program(win, "Invalid walls, map not closed properly", 1);
 	while (i < win->map_height - 1)
 	{
@@ -65,12 +66,14 @@ void	check_counted_elements(t_window *win)
 
 void	check_reachable(t_window *win)
 {
-	t_elements elem;
-	
+	t_elements	elem;
+
 	elem = (t_elements){0};
 	if (!win->pos_x || !win->pos_y)
 		exit_program(win, "Invalid player position", 1);
 	flood_fill(win, &elem, win->pos_y, win->pos_x);
-	if (win->n_players != elem.n_players || win->n_coins != elem.n_coins)
-		exit_program(win, "Invalid map: not all elements are reachable", 1);		
+	if (win->n_players != elem.n_players
+		|| win->n_coins != elem.n_coins)
+		exit_program(win,
+			"Invalid map:not all elements are reachable", 1);
 }
