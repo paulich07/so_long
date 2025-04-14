@@ -37,7 +37,8 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/player_utils.c \
 		$(SRC_DIR)/program_utils.c \
 		$(SRC_DIR)/map_utils.c \
-		$(SRC_DIR)/parsing.c
+		$(SRC_DIR)/parsing.c \
+		$(SRC_DIR)/map_parsing.c
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a

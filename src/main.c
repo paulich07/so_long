@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 14:57:21 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:52:08 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,21 @@ int main(int argc, char *argv[])
 
 	// --------------------------Parsing mappa
 	copy_map(&win);
+
+	check_walls(&win, win.map_copy);
 	// controllo walls
 	// controllo players/collectables/exit e caratteri non validi
 	// flood fill a partire da pos player mentre raccolgo collectables, ed exit
-	
-	
 
-	
-
-	// win.n_collected_coins = 0;
-	// win.n_coins = 0;
-	count_coins(&win);
+	// count_coins(win.map_copy);
 
 	// Inizializza libreria
 	win.mlx = mlx_init();
 	if (!win.mlx)
 		return (1);
-	initialize_player_position(&win);
-	// printf("pos y %d\n", win.pos_y);
-	// printf("pos x %d\n", win.pos_x);
 
+	initialize_player_position(&win);
+	
 	// Creo finestra
 	win.win = mlx_new_window(win.mlx, win.map_width * TILE, win.map_height * TILE, "so_long");
 	if (!win.win)

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 14:54:16 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:47:45 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int		key_press(int keycode, t_window *vars);
 int		count_lines(t_window *win, char *filename);
 int		is_valid_filename(char *filename);
 int		is_directory(char *filename);
+
+// Map parsing
+int		contains_only(char *s, char *allowed);
+void	check_walls(t_window *win, char **map);
 
 // Utils
 void	render_map(t_window *win);
