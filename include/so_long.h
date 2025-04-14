@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:24:50 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:21:00 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ typedef struct	s_data {
 	int		n_collected_coins;
 } t_window;
 
+typedef struct	s_elements {
+	int		n_coins;
+	int		n_players;
+	int		n_exit;
+} t_elements;
+
 // Hooks
 int		key_press(int keycode, t_window *vars);
 
@@ -64,6 +70,7 @@ void	check_reachable(t_window *win);
 // Utils
 int		is_walkable(t_window *win, int x, int y);
 int		contains_only(char *s, char *allowed);
+void	flood_fill(t_window *win, t_elements *elem, int curr_x, int curr_y);
 
 // Player Utils
 void	initialize_player_position(t_window *win);
