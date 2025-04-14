@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:02:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/10 02:41:07 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:36:01 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 char			*ft_strnstr(const char *big, const char *little, size_t len);
 int				ft_atoi(const char *nptr);
 void			*ft_calloc(size_t nmemb, size_t size);
+char			*ft_strdup(const char *s);
 // Part 2
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);

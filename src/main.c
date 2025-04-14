@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/13 17:15:27 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:28:51 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	// --------------------------Parsing mappa
 	// creo copia matrice
 	
-	copy_map(&win);
+	// copy_map(&win);
 	
 	// controllo walls
 	// controllo players/collectables/exit e caratteri non validi
@@ -50,12 +50,6 @@ int main(int argc, char *argv[])
 	win.mlx = mlx_init();
 	if (!win.mlx)
 		return (1);
-	
-	// win.map_width--;
-	// win.map_height = 0;
-	// while (win.map[win.map_height])
-	// 	win.map_height++;
-
 	initialize_player_position(&win);
 	// printf("pos y %d\n", win.pos_y);
 	// printf("pos x %d\n", win.pos_x);
