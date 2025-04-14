@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 14:28:43 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:38:05 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char **allocate_map(t_window *win, char *filename)
 	win->map_height = count_lines(win, filename);
 	if (win->map_height < 1)
 		exit_program(win, "No lines to read");		
-	ft_printf("n lines: %d\n", win->map_height);
 	map = ft_calloc(win->map_height + 1, sizeof(char *));
 	if (!map)
 		exit_program(win, "Map not allocated properly");
@@ -33,12 +32,12 @@ char **allocate_map(t_window *win, char *filename)
 	if (fd < 0)
 		exit_program(win, "Error in file opening");
 	line = get_next_line(fd);
+	if (!line)
+		exit_program(win, "Error: first line of map empty");
 	win->map_width = ft_strlen(line);
 	if (line[win->map_width - 1] == '\n')
 		line[win->map_width - 1] = '\0';
 	win->map_width = ft_strlen(line);
-	if (!line)
-		exit_program(win, "Error: first line of map empty");
 	while(line != NULL)
 	{
 		if (line[(ft_strlen(line)) - 1] == '\n')
@@ -69,7 +68,6 @@ void deallocate_map(char **map, int height)
 char **copy_map(t_window *win)
 {
 	int	i;
-	int	l;
 
 	if (!win->map)
 		exit_program(win, "Map not saved properly: impossible to copy");
@@ -80,23 +78,16 @@ char **copy_map(t_window *win)
 	win->map_copy = ft_calloc(win->map_height + 1, sizeof(char *));
 	if (!win->map_copy)
 		exit_program(win, "Map not allocated properly");
-
 	i = 0;
-	l = ft_strlen(win->map[i]);
 	while(i < win->map_height)
 	{
-		win->map_copy[i] = ft_calloc(l + 1, sizeof(char));
-		ft_printf("alloco [%d] %s di lunghezza %ld\n", i, win->map[i], ft_strlen(win->map[i]));
+		ft_printf("alloco [%d] %s di lunghezza %d\n", i, win->map[i], win->map_width);
+		win->map_copy[i] = ft_strdup(win->map[i]);
 		if (!win->map_copy[i])
 		{
 			deallocate_map(win->map_copy, i);
 			exit_program(win, "(Copy) Map line not allocated properly");		
 		}
-
-
-		// copia il contenuto di map[i] dentro map_copy[i]
-		// anche per ultimo +1
-		// ft_strdup();
 		i++;
 	}
 	win->map_copy[i] = NULL;

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 14:28:51 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:37:35 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int main(int argc, char *argv[])
 	// --------------------------Parsing mappa
 	// creo copia matrice
 	
-	// copy_map(&win);
+	copy_map(&win);
+	deallocate_map(win.map_copy, win.map_height);
 	
 	// controllo walls
 	// controllo players/collectables/exit e caratteri non validi
