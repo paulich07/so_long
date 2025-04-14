@@ -92,6 +92,6 @@ fclean: clean
 	@echo "$(RED)---- cleaning minilibx ----$(RESET)"
 	@$(MAKE) clean -C $(MINILIBX_DIR)
 
-re: fclean all 
+re: fclean all
  
 .PHONY: all clean fclean re

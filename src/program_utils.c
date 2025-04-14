@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:57:28 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:45:53 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	exit_program(t_window *win, char *s, int error)
 {
-	if (win->map)
-		deallocate_map(win->map, win->map_height);
-	if (win->map_copy)
-		deallocate_map(win->map_copy, win->map_height);
+	deallocate_map(win->map, win->map_height);
+	deallocate_map(win->map_copy, win->map_height);
 	if (win->img_floor)
 		mlx_destroy_image(win->mlx, win->img_floor);
 	if (win->img_wall)
@@ -36,7 +34,7 @@ void	exit_program(t_window *win, char *s, int error)
 		free(win->mlx);
 	}
 	if (error)
-		ft_printf("Error\n");		
+		ft_printf("Error\n");
 	if (s && ft_strlen(s) > 0)
 		ft_printf("%s\n", s);
 	exit(0);

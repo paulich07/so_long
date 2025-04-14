@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:55:43 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:45:34 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void deallocate_map(char **map, int height)
 	int i;
 
 	i = 0;
+	if (!map || !*map)
+		return;
 	// ft_printf("deallocate map\n");
 	while (i < height)
 	{

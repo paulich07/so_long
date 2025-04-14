@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 20:37:07 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:38:16 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	check_walls(t_window *win, char **map)
 	int	i;
 
 	i = 1;
-	// check first and last line
 	if (!contains_only(map[0], "1") || !contains_only(map[win->map_height - 1], "1"))
 		exit_program(win, "Invalid walls, map not closed properly", 1);
-	// check inner walls
 	while (i < win->map_height - 1)
 	{
 		if (!contains_only(map[i], "01EPC"))
