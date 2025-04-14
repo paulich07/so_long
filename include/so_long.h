@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 23:26:22 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:40:51 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	check_reachable(t_window *win);
 int		is_walkable(t_window *win, int x, int y);
 int		contains_only(char *s, char *allowed);
 void	flood_fill(t_window *win, t_elements *elem, int curr_x, int curr_y);
+void	render_image(t_window *win, int y, int x);
+void	put_images(t_window *win);
 
 // Player Utils
 void	initialize_player_position(t_window *win);
@@ -93,7 +95,6 @@ void	exit_program(t_window *win, char *s, int error);
 // Map Utils
 void	deallocate_map(char **map, int height);
 void	copy_map(t_window *win);
-void	put_images(t_window *win);
 void	render_map(t_window *win);
 int		allocate_map_from_file(t_window *win, int fd);
 

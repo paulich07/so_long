@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 20:46:19 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 23:41:12 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,48 @@ void	flood_fill(t_window *win, t_elements *elem, int curr_y, int curr_x)
 	flood_fill(win, elem, curr_y, curr_x + 1);
 	flood_fill(win, elem, curr_y + 1, curr_x);
 	flood_fill(win, elem, curr_y, curr_x - 1);
+}
+
+void	put_images(t_window *win)
+{
+	int	img_width;
+	int	img_height;
+
+	img_width = TILE;
+	img_height = TILE;
+	win->img_floor = mlx_xpm_file_to_image(win->mlx,
+			"textures/floor.xpm", &img_width, &img_height);
+	win->img_wall = mlx_xpm_file_to_image(win->mlx,
+			"textures/wall.xpm", &img_width, &img_height);
+	win->img_player = mlx_xpm_file_to_image(win->mlx,
+			"textures/player.xpm", &img_width, &img_height);
+	win->img_collect = mlx_xpm_file_to_image(win->mlx,
+			"textures/collect.xpm", &img_width, &img_height);
+	win->img_exit = mlx_xpm_file_to_image(win->mlx,
+			"textures/exit.xpm", &img_width, &img_height);
+	if (!win->img_floor || !win->img_wall || !win->img_player
+		|| !win->img_collect || !win->img_exit)
+		exit_program(win, "Image missing or not loaded properly", 1);
+}
+
+void	render_image(t_window *win, int y, int x)
+{
+	char	tile;
+
+	tile = win->map[y][x];
+	if (win->map[y][x] == '1')
+		mlx_put_image_to_window(win->mlx, win->win,
+			win->img_wall, x * TILE, y * TILE);
+	else if (win->map[y][x] == '0')
+		mlx_put_image_to_window(win->mlx, win->win,
+			win->img_floor, x * TILE, y * TILE);
+	else if (win->map[y][x] == 'P')
+		mlx_put_image_to_window(win->mlx, win->win,
+			win->img_player, x * TILE, y * TILE);
+	else if (win->map[y][x] == 'C')
+		mlx_put_image_to_window(win->mlx, win->win,
+			win->img_collect, x * TILE, y * TILE);
+	else if (tile == 'E')
+		mlx_put_image_to_window(win->mlx, win->win,
+			win->img_exit, x * TILE, y * TILE);
 }
