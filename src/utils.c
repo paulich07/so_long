@@ -6,13 +6,11 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:07:48 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:15:25 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
 
 int	is_walkable(t_window *win, int x, int y)
 {
@@ -25,27 +23,23 @@ int	is_walkable(t_window *win, int x, int y)
 	return (0);
 }
 
-void	count_elements(t_window *win)
+/// @brief check if string contains only allowed chars
+/// @param s string to check
+/// @param allowed string of allowed chars
+/// @return 1 if string contains only allowed chars or 0 otherwise or if arguments are not valid 
+int	contains_only(char *s, char *allowed)
 {
-	int	y;
-	int	x;
+	int	i;
 
-	y = 0;
-	x = 0;
-	while (win->map[y])
+	i = 0;
+	if (!s || !allowed)
+		return (0);
+	while (s[i] != '\0')
 	{
-		x = 0;
-		while (win->map[y][x])
-		{
-			if (win->map[y][x] == 'C')
-				win->n_coins++;
-			if (win->map[y][x] == 'P')
-				win->n_players++;
-			if (win->map[y][x] == 'E')
-				win->n_exit++;
-			x++;
-		}
-		y++;
+		// ft_printf("check if %c is different from %s\n", s[i], allowed);
+		if (ft_strchr(allowed, s[i]) == 0)
+			return (0);
+		i++;
 	}
-	printf("coins %d\n", win->n_coins);
+	return (1);
 }

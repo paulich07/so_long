@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:07:19 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:14:28 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ int		is_valid_filename(char *filename);
 int		is_directory(char *filename);
 
 // Map parsing
-int		contains_only(char *s, char *allowed);
+void	count_elements(t_window *win);
 void	check_walls(t_window *win, char **map);
+void	check_counted_elements(t_window *win);
 
 // Utils
 int		is_walkable(t_window *win, int x, int y);
-void	count_elements(t_window *win);
+int		contains_only(char *s, char *allowed);
 
 // Player Utils
 void	initialize_player_position(t_window *win);

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:09:35 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:14:20 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int main(int argc, char *argv[])
 	check_walls(&win, win.map_copy);
 	// controllo players/collectables/exit
 	count_elements(&win);
-	// flood fill a partire da pos player mentre raccolgo collectables, ed exit
+	check_counted_elements(&win);
+	// flood fill a partire da pos player mentre CONTO collectables, player ed exit
 
 
 	// Inizializza libreria

@@ -6,31 +6,35 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 16:36:35 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:15:12 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/// @brief check if string contains only allowed chars
-/// @param s string to check
-/// @param allowed string of allowed chars
-/// @return 1 if string contains only allowed chars or 0 otherwise or if arguments are not valid 
-int	contains_only(char *s, char *allowed)
+void	count_elements(t_window *win)
 {
-	int	i;
+	int	y;
+	int	x;
 
-	i = 0;
-	if (!s || !allowed)
-		return (0);
-	while (s[i] != '\0')
+	y = 0;
+	x = 0;
+	while (win->map[y])
 	{
-		// ft_printf("check if %c is different from %s\n", s[i], allowed);
-		if (ft_strchr(allowed, s[i]) == 0)
-			return (0);
-		i++;
+		x = 0;
+		while (win->map[y][x])
+		{
+			if (win->map[y][x] == 'C')
+				win->n_coins++;
+			if (win->map[y][x] == 'P')
+				win->n_players++;
+			if (win->map[y][x] == 'E')
+				win->n_exit++;
+			x++;
+		}
+		y++;
 	}
-	return (1);
+	printf("coins %d\n", win->n_coins);
 }
 
 void	check_walls(t_window *win, char **map)
@@ -52,3 +56,12 @@ void	check_walls(t_window *win, char **map)
 	}
 }
 
+void	check_counted_elements(t_window *win)
+{
+	if (win->n_exit != 1)
+		exit_program(win, "Invalid number of Exit (E)");
+	if (win->n_players != 1)
+		exit_program(win, "Invalid number of Players (P)");
+	if (win->n_coins < 1)
+		exit_program(win, "Invalid number of Collectables (C)");
+}
