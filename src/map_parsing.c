@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:33:47 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:22:56 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	check_reachable(t_window *win)
 		exit_program(win, "Invalid player position");
 	flood_fill(win, &elem, win->pos_y, win->pos_x);
 	// check if elements are equal
-	ft_printf("players: %d, reached %d\n", win->n_players, elem.n_players);
-	ft_printf("exit: %d, reached %d\n", win->n_exit, elem.n_exit);
-	ft_printf("coins: %d, reached %d\n", win->n_coins, elem.n_coins);
+	// ft_printf("players: %d, reached %d\n", win->n_players, elem.n_players);
+	// ft_printf("exit: %d, reached %d\n", win->n_exit, elem.n_exit);
+	// ft_printf("coins: %d, reached %d\n", win->n_coins, elem.n_coins);
 	if (win->n_exit != elem.n_exit || win->n_players != elem.n_players
 		|| win->n_coins != elem.n_coins)
 		exit_program(win, "Invalid map: not all elements are reachable");		

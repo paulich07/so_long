@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:36:15 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:22:30 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	exit_program(t_window *win, char *s)
 		mlx_destroy_display(win->mlx);
 		free(win->mlx);
 	}
+	ft_printf("Error\n");	
 	if (s && ft_strlen(s) > 0)
 		ft_printf("%s\n", s);
 	exit(0);
