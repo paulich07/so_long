@@ -73,7 +73,8 @@ void	check_reachable(t_window *win)
 		exit_program(win, "Invalid player position", 1);
 	flood_fill(win, &elem, win->pos_y, win->pos_x);
 	if (win->n_players != elem.n_players
-		|| win->n_coins != elem.n_coins)
+		|| win->n_coins != elem.n_coins
+		|| win->n_exit != elem.n_exit)
 		exit_program(win,
 			"Invalid map:not all elements are reachable", 1);
 }
