@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:26:30 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:30:20 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_walkable(t_window *win, int x, int y)
 /// @brief check if string contains only allowed chars
 /// @param s string to check
 /// @param allowed string of allowed chars
-/// @return 1 if string contains only allowed chars or 0 otherwise or if arguments are not valid 
+/// @return 1 if a valid string contains only allowed chars 0 otherwise
 int	contains_only(char *s, char *allowed)
 {
 	int	i;
@@ -34,7 +34,6 @@ int	contains_only(char *s, char *allowed)
 		return (0);
 	while (s[i] != '\0')
 	{
-		// ft_printf("check if %c is different from %s\n", s[i], allowed);
 		if (ft_strchr(allowed, s[i]) == 0)
 			return (0);
 		i++;
@@ -44,10 +43,13 @@ int	contains_only(char *s, char *allowed)
 
 void	flood_fill(t_window *win, t_elements *elem, int curr_y, int curr_x)
 {
-	if (curr_y < 0 || curr_y > win->map_height || curr_x < 0 || curr_x > win->map_width
-		|| win->map_copy[curr_y][curr_x] == '1' || win->map_copy[curr_y][curr_x] == 'R'
-		|| (win->map_copy[curr_y][curr_x] == 'E' && elem->n_coins != win->n_coins))
-		return;
+	if (curr_y < 0 || curr_y > win->map_height
+		|| curr_x < 0 || curr_x > win->map_width
+		|| win->map_copy[curr_y][curr_x] == '1'
+		|| win->map_copy[curr_y][curr_x] == 'R'
+		|| (win->map_copy[curr_y][curr_x] == 'E'
+			&& elem->n_coins != win->n_coins))
+		return ;
 	if (win->map_copy[curr_y][curr_x] == 'C')
 		elem->n_coins++;
 	if (win->map_copy[curr_y][curr_x] == 'E')
