@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 14:38:05 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:43:18 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ void deallocate_map(char **map, int height)
 	free(map);
 }
 
+/// @brief create a dynamically allocated copy of the map 
+/// @param win general structure containing pointers to both the original map and the copy 
+/// @return void
 char **copy_map(t_window *win)
 {
 	int	i;
