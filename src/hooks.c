@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 22:51:09 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/15 00:54:55 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ int	key_press(int keycode, t_window *win)
 		move_player(win, 0, -1);
 	else if (keycode == XK_Down)
 		move_player(win, 0, 1);
-	if (keycode == XK_Left || keycode == XK_Right
-		|| keycode == XK_Up || keycode == XK_Down)
-		win->n_moves++;
-	ft_printf("moves: %d\n", win->n_moves);
 	return (1);
 }
 

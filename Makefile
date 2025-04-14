@@ -100,7 +100,7 @@ fclean: clean
 	@$(MAKE) --no-print-directory LIBFT_CLEAN_ENABLED=0 clean
 	@$(MAKE) fclean -C $(LIBFT_DIR) --silent
 	@echo "$(RED)---- cleaning minilibx ----$(RESET)"
-	@$(MAKE) clean -C $(MINILIBX_DIR)
+	@rm -rf $(MINILIBX_DIR)
 
 re: fclean all
  

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:10 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 22:54:39 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/15 00:55:06 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	move_player(t_window *win, int move_x, int move_y)
 		win->pos_y += move_y;
 		win->map[win->pos_y][win->pos_x] = 'P';
 		render_map(win);
+		win->n_moves++;
+		ft_printf("moves: %d\n", win->n_moves);
 		return ;
 	}
 }
