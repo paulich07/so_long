@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 22:53:38 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/15 00:47:20 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	check_reachable(t_window *win)
 		exit_program(win, "Invalid player position", 1);
 	flood_fill(win, &elem, win->pos_y, win->pos_x);
 	if (win->n_players != elem.n_players
-		|| win->n_coins != elem.n_coins)
+		|| win->n_coins != elem.n_coins
+		|| elem.n_exit < 1)
 		exit_program(win,
 			"Invalid map:not all elements are reachable", 1);
 }

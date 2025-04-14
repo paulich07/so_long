@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 23:41:12 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/15 00:44:56 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,18 @@ int	contains_only(char *s, char *allowed)
 
 void	flood_fill(t_window *win, t_elements *elem, int curr_y, int curr_x)
 {
+	ft_printf("y: %d, x %d\n", curr_y, curr_x);
 	if (curr_y < 0 || curr_y > win->map_height
 		|| curr_x < 0 || curr_x > win->map_width
 		|| win->map_copy[curr_y][curr_x] == '1'
 		|| win->map_copy[curr_y][curr_x] == 'R'
-		|| win->map_copy[curr_y][curr_x] == 'E'
 	)
 		return ;
+	if (win->map_copy[curr_y][curr_x] == 'E')
+	{
+		elem->n_exit++;
+		return ;
+	}
 	if (win->map_copy[curr_y][curr_x] == 'C')
 		elem->n_coins++;
 	if (win->map_copy[curr_y][curr_x] == 'P')
