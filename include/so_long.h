@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:51:46 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:48:17 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
 	int		n_coins;
 	int		n_players;
 	int		n_exit;
+	int		n_moves;
 	int		n_collected_coins;
 }	t_window;
 

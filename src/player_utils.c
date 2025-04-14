@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:10 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:59:00 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:54:30 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	move_player(t_window *win, int move_x, int move_y)
   if (is_exit(win, win->pos_y + move_y, win->pos_x + move_x)
     && !all_coins_collected(win))
   {
-    ft_printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
+    ft_printf("coins: %d / %d\n", win->n_collected_coins, win->n_coins);
     return ;
   }
   if (is_exit(win, win->pos_y + move_y, win->pos_x + move_x) && all_coins_collected(win))
@@ -61,7 +61,7 @@ void	move_player(t_window *win, int move_x, int move_y)
     if (win->map[win->pos_y + move_y][win->pos_x + move_x] == 'C')
     {
       win->n_collected_coins++;
-      ft_printf("coins: %d collected %d\n", win->n_coins, win->n_collected_coins);
+      ft_printf("coins: %d / %d\n", win->n_collected_coins, win->n_coins);
     }
     win->map[win->pos_y][win->pos_x] = '0';
     win->pos_x += move_x;
