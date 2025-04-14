@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 16:36:11 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:36:15 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,4 @@ void	exit_program(t_window *win, char *s)
 	if (s && ft_strlen(s) > 0)
 		ft_printf("%s\n", s);
 	exit(0);
-}
-
-int  close_window(t_window *win)
-{
-	exit_program(win, "Window closed");
-	return (0);
 }

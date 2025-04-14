@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:25:29 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:33:47 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,3 +82,4 @@ void	check_reachable(t_window *win)
 		|| win->n_coins != elem.n_coins)
 		exit_program(win, "Invalid map: not all elements are reachable");		
 }
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 19:00:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/12 00:45:03 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:36:44 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ int	key_press(int keycode, t_window *win)
 		move_player(win, 0, 1);
 	}
 	return (1);
+}
+
+int	close_window(t_window *win)
+{
+	exit_program(win, "Window closed");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:21:00 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:36:10 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # include <X11/X.h>
 # include <fcntl.h>
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*mlx;
 	void	*win;
 	char	**map;
@@ -40,21 +41,22 @@ typedef struct	s_data {
 	int		pos_y;
 	int		map_height;
 	int		map_width;
-	// Elements
 	int		n_coins;
 	int		n_players;
 	int		n_exit;
 	int		n_collected_coins;
-} t_window;
+}	t_window;
 
-typedef struct	s_elements {
+typedef struct s_elements
+{
 	int		n_coins;
 	int		n_players;
 	int		n_exit;
-} t_elements;
+}	t_elements;
 
 // Hooks
 int		key_press(int keycode, t_window *vars);
+int		close_window(t_window *win);
 
 // Parsing
 int		is_valid_map_size(t_window *win, char *filename);
@@ -80,7 +82,6 @@ int		is_exit(t_window *win, int pos_y, int pos_x);
 
 // Program Utils
 void	exit_program(t_window *win, char *s);
-int		close_window(t_window *win);
 
 // Map Utils
 char	**allocate_map(t_window *win, char *filename);
