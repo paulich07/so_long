@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:10 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/12 00:53:26 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:26:18 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	move_player(t_window *win, int move_x, int move_y)
     render_map(win);
     return ;
   }
-  ft_printf("not walkable\n");
+  // ft_printf("not walkable\n");
 }
 
 int	is_exit(t_window *win, int pos_y, int pos_x)

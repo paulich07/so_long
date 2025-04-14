@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:24 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:38:55 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:25:44 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int main(int argc, char *argv[])
 	char	*filename;
 
 	if (argc != 2)
-		return (ft_printf("Usage: ./so_long <map.ber>\n"), 1);
+		return (ft_printf("Error\nUsage: ./so_long <map.ber>\n"), 1);
 	filename = argv[1];
 	if (!is_valid_filename(filename))
-		return (ft_printf("Invalid file format\n"), 1);
+		return (ft_printf("Error\nInvalid file format\n"), 1);
 	if (is_directory(filename))
-		return (ft_printf("Directory instead of file provided\n"), 1);
+		return (ft_printf("Error\nDirectory instead of file provided\n"), 1);
 
 	win.map = allocate_map(&win, filename);
 	if (!win.map || !*win.map)
@@ -47,7 +47,8 @@ int main(int argc, char *argv[])
 		return (1);
 
 	// Creo finestra
-	win.win = mlx_new_window(win.mlx, win.map_width * TILE, win.map_height * TILE, "so_long");
+	win.win = mlx_new_window(win.mlx, win.map_width * TILE,
+			win.map_height * TILE, "so_long");
 	if (!win.win)
 		exit_program(&win, "Window not loaded properly");
 
