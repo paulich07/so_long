@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:53:35 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:37:07 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	check_counted_elements(t_window *win)
 		exit_program(win, "Invalid number of Collectables (C)", 1);
 }
 
-
 void	check_reachable(t_window *win)
 {
 	t_elements elem = {0};
@@ -78,8 +77,6 @@ void	check_reachable(t_window *win)
 	// ft_printf("players: %d, reached %d\n", win->n_players, elem.n_players);
 	// ft_printf("exit: %d, reached %d\n", win->n_exit, elem.n_exit);
 	// ft_printf("coins: %d, reached %d\n", win->n_coins, elem.n_coins);
-	if (win->n_exit != elem.n_exit || win->n_players != elem.n_players
-		|| win->n_coins != elem.n_coins)
+	if (win->n_players != elem.n_players || win->n_coins != elem.n_coins)
 		exit_program(win, "Invalid map: not all elements are reachable", 1);		
 }
-
