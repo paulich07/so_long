@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:38:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 17:01:15 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:03:24 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int is_valid_map_size(t_window *win, char *filename)
 
   win->map_height = 0;
   line = NULL;
-  // ft_printf("count lines\n");  
   if (!filename)
     exit_program(win, "Filename not provided");
   fd = open(filename, O_RDONLY);
@@ -69,7 +68,6 @@ int is_valid_map_size(t_window *win, char *filename)
   while(line)
   {
     win->map_height++;
-    // printf("%s\n", line);
 		if (line[(ft_strlen(line)) - 1] == '\n')
 			line[(ft_strlen(line)) - 1] = '\0';
     if ((int)(ft_strlen(line)) != win->map_width)

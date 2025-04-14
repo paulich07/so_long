@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 16:55:54 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:05:42 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ char **allocate_map(t_window *win, char *filename)
 	if (!filename)
 		exit_program(win, "Filename not specified");
 	if (!is_valid_map_size(win, filename))
-		exit_program(win, "Map is not valid");
-	// if (win->map_height < 1)
-	// 	exit_program(win, "No lines to read");		
+		exit_program(win, "Map is not rectangular or contains empty spaces");
 	map = ft_calloc(win->map_height + 1, sizeof(char *));
 	if (!map)
 		exit_program(win, "Map not allocated properly");

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 16:42:06 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:07:48 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_walkable(t_window *win, int x, int y)
 	return (0);
 }
 
-void	count_coins(t_window *win)
+void	count_elements(t_window *win)
 {
 	int	y;
 	int	x;
@@ -39,6 +39,10 @@ void	count_coins(t_window *win)
 		{
 			if (win->map[y][x] == 'C')
 				win->n_coins++;
+			if (win->map[y][x] == 'P')
+				win->n_players++;
+			if (win->map[y][x] == 'E')
+				win->n_exit++;
 			x++;
 		}
 		y++;

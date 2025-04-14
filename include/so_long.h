@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 16:42:42 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:07:19 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ typedef struct	s_data {
 	int		pos_y;
 	int		map_height;
 	int		map_width;
-	// Coins
+	// Elements
 	int		n_coins;
+	int		n_players;
+	int		n_exit;
 	int		n_collected_coins;
 } t_window;
 
@@ -59,7 +61,7 @@ void	check_walls(t_window *win, char **map);
 
 // Utils
 int		is_walkable(t_window *win, int x, int y);
-void	count_coins(t_window *win);
+void	count_elements(t_window *win);
 
 // Player Utils
 void	initialize_player_position(t_window *win);
