@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:00:26 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:23:53 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:53:35 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	check_walls(t_window *win, char **map)
 	i = 1;
 	// check first and last line
 	if (!contains_only(map[0], "1") || !contains_only(map[win->map_height - 1], "1"))
-		exit_program(win, "Invalid walls: map not closed properly");
+		exit_program(win, "Invalid walls, map not closed properly", 1);
 	// check inner walls
 	while (i < win->map_height - 1)
 	{
 		if (!contains_only(map[i], "01EPC"))
-			exit_program(win, "Invalid character found in map");
+			exit_program(win, "Invalid character found in map", 1);
 		if (map[i][0] != '1' || map[i][win->map_width - 1] != '1')
-			exit_program(win, "Invalid walls: map not closed properly");
+			exit_program(win, "Invalid walls, map not closed properly", 1);
 		i++;
 	}
 }
@@ -59,11 +59,11 @@ void	check_walls(t_window *win, char **map)
 void	check_counted_elements(t_window *win)
 {
 	if (win->n_exit != 1)
-		exit_program(win, "Invalid number of Exit (E)");
+		exit_program(win, "Invalid number of Exit (E)", 1);
 	if (win->n_players != 1)
-		exit_program(win, "Invalid number of Players (P)");
+		exit_program(win, "Invalid number of Players (P)", 1);
 	if (win->n_coins < 1)
-		exit_program(win, "Invalid number of Collectables (C)");
+		exit_program(win, "Invalid number of Collectables (C)", 1);
 }
 
 
@@ -72,7 +72,7 @@ void	check_reachable(t_window *win)
 	t_elements elem = {0};
 	// check player position
 	if (!win->pos_x || !win->pos_y)
-		exit_program(win, "Invalid player position");
+		exit_program(win, "Invalid player position", 1);
 	flood_fill(win, &elem, win->pos_y, win->pos_x);
 	// check if elements are equal
 	// ft_printf("players: %d, reached %d\n", win->n_players, elem.n_players);
@@ -80,6 +80,6 @@ void	check_reachable(t_window *win)
 	// ft_printf("coins: %d, reached %d\n", win->n_coins, elem.n_coins);
 	if (win->n_exit != elem.n_exit || win->n_players != elem.n_players
 		|| win->n_coins != elem.n_coins)
-		exit_program(win, "Invalid map: not all elements are reachable");		
+		exit_program(win, "Invalid map: not all elements are reachable", 1);		
 }
 

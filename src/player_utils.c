@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:10 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 19:26:18 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:57:51 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	move_player(t_window *win, int move_x, int move_y)
     return ;
   }
   if (is_exit(win, win->pos_y + move_y, win->pos_x + move_x) && all_coins_collected(win))
-    exit_program(win, "Game finished");
+    exit_program(win, "Game finished", 0);
   if (is_walkable(win, win->pos_x + move_x, win->pos_y + move_y))
   {
     if (win->map[win->pos_y + move_y][win->pos_x + move_x] == 'C')

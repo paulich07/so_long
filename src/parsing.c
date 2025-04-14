@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:38:05 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:54:34 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:57:13 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ int	is_valid_map_size(t_window *win, char *filename)
 	int		fd;
 
 	if (!filename)
-		exit_program(win, "Filename not provided");
+		exit_program(win, "Filename not provided", 1);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		exit_program(win, "Cannot open file");
+		exit_program(win, "Cannot open file", 1);
 	line = get_next_line(fd);
 	if (!line)
 		return (close(fd), 0);

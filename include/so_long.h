@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 18:36:10 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:51:46 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		all_coins_collected(t_window *win);
 int		is_exit(t_window *win, int pos_y, int pos_x);
 
 // Program Utils
-void	exit_program(t_window *win, char *s);
+void	exit_program(t_window *win, char *s, int error);
 
 // Map Utils
 char	**allocate_map(t_window *win, char *filename);
