@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:00:33 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 20:45:34 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 21:19:31 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ char **allocate_map(t_window *win, char *filename)
 	{
 		if (line[(ft_strlen(line)) - 1] == '\n')
 			line[(ft_strlen(line)) - 1] = '\0';
-		// printf("check if size of line is valid\n");
-		// if ((int)(ft_strlen(line)) != win->map_width)
-		// 	exit_program(win, "Map is not rectangular");
 		map[i] = line;
 		line = get_next_line(fd);
 		i++;
@@ -63,7 +60,6 @@ void deallocate_map(char **map, int height)
 	i = 0;
 	if (!map || !*map)
 		return;
-	// ft_printf("deallocate map\n");
 	while (i < height)
 	{
 		free(map[i]);
@@ -90,7 +86,6 @@ void	copy_map(t_window *win)
 	i = 0;
 	while(i < win->map_height)
 	{
-		// ft_printf("alloco [%d] %s di lunghezza %d\n", i, win->map[i], win->map_width);
 		win->map_copy[i] = ft_strdup(win->map[i]);
 		if (!win->map_copy[i])
 		{

@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:58 by plichota          #+#    #+#             */
-/*   Updated: 2025/04/14 20:48:17 by plichota         ###   ########.fr       */
+/*   Updated: 2025/04/14 21:21:50 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ typedef struct s_elements
 	int		n_players;
 	int		n_exit;
 }	t_elements;
+
+// Main
+void	parse_map(t_window *win);
+int		is_valid_file(char *filename);
 
 // Hooks
 int		key_press(int keycode, t_window *vars);
