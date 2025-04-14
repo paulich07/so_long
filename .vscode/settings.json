@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "mlx.h": "c",
-        "so_long.h": "c",
-        "keysym.h": "c"
-    }
-}
