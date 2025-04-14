@@ -1,4 +1,6 @@
 ./libs/minilibx-linux/
 ./obj/
 *.o
-./so_long
+so_long
+*.a
+.nfs*
