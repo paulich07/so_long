@@ -22,7 +22,7 @@ HEADERS_DIR = include
 LIBFT_HEADERS_DIR = $(LIBFT_DIR)/include
 
 # Links
-MINILIBX_URL = https://cdn.intra.42.fr/document/document/31497/minilibx-linux.tgz
+MINILIBX_URL = https://cdn.intra.42.fr/document/document/35175/minilibx-linux.tgz
 
 # Compiler
 CC = cc
